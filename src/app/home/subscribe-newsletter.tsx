@@ -22,7 +22,7 @@ export default function SubscribeNewsletter() {
                     </Grid>
 
                     <Grid item xs={12} md={6} sx={{textAlign:isMobile?"":'left'}}>
-                        <Button type="submit" variant="contained" size="large" color="success">Subscribe</Button>
+                        <Button type="submit" variant="contained" size="large" color="info">Subscribe</Button>
                     </Grid>
 
                 </Grid>

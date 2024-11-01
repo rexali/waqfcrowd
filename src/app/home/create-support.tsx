@@ -26,12 +26,12 @@ export default function CreateSupport() {
             <Box>
                 <Grid container spacing={1}>
                     <Grid xs={12} md={6}>
-                        <Button variant="contained" color="success"  fullWidth  sx={{ mt: 3, mb: 2 }}>
+                        <Button variant="contained" color="info"  fullWidth  sx={{ mt: 3, mb: 2 }}>
                             <Link href="/waqfs/create-waqf" style={{ color: "white", textDecoration: "none" }}>Create a waqf</Link>
                         </Button>
                     </Grid>
                     <Grid xs={12} md={6}>
-                        <Button variant="contained" color="success"  fullWidth  sx={{ mt: 3, mb: 2 }}>
+                        <Button variant="contained" color="info"  fullWidth  sx={{ mt: 3, mb: 2 }}>
                             <Link href="/waqfs" style={{ color: "white", textDecoration: "none" }}>Support a waqf</Link>
                         </Button>
                     </Grid>
