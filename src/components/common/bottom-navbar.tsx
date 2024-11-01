@@ -25,7 +25,7 @@ export default function BottomNavbar() {
                 bottom: 0, 
                 left: 0, 
                 right: 0, 
-                bgcolor:'green'
+                bgcolor:'#6232a8'
                 }}>
                 <Button sx={{p:1}} key={'share'} onClick={()=>shareLink()} startIcon={<Share sx={{color:"white"}} />}></Button>
                 <Button sx={{p:1}} key={"email"} href="mailto:alybaba2009@gmail.com"  startIcon={<Email sx={{color:"white"}} />}></Button>

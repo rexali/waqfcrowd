@@ -229,7 +229,7 @@ export default function CreateWaqf() {
               type="submit"
               fullWidth
               variant="contained"
-              color='success'
+              color='info'
               sx={{ mt: 3, mb: 2 }}
             >
               Submit

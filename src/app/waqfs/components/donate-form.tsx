@@ -93,7 +93,7 @@ export default function DonateForm({ waqfId }: { waqfId: any }) {
                         <Button
                             type="submit"
                             fullWidth
-                            color='success'
+                            color='info'
                             variant="contained"
                             sx={{ mt: 3, mb: 2 }}
                         >
