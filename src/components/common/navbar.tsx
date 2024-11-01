@@ -64,7 +64,7 @@ function NavBar() {
 
   const isMobile = useMediaQuery({ maxDeviceWidth: 1023 });
 
-  return <AppBar position={isMobile ? "fixed" : "static"} sx={{ backgroundColor: 'green' }}>
+  return <AppBar position={isMobile ? "fixed" : "static"} sx={{ backgroundColor: '#6232a8' }}>
     <Container maxWidth={"xl"}>
       <Toolbar disableGutters>
         {!isMobile && <AWFLogo />}
