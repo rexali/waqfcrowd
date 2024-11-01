@@ -1,9 +1,9 @@
 import { BASE_URL } from "@/constants/url";
 import { fetchData } from "./fetchData";
-import { Data } from "../types/data";
+// import { Data } from "../types/data";
 import { savePathLink } from "@/utils/savePathLink";
 
-const saveFavouriteWaqf = async (data: Data, successCallback?: any, failCallback?: any) => {
+const saveFavouriteWaqf = async (data:any, successCallback?: any, failCallback?: any) => {
    try {
       if (data.userId) {
          const result = await fetchData(`${BASE_URL}/likes`, { body: JSON.stringify(data), method: "post" });

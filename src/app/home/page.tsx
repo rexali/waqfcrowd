@@ -22,9 +22,8 @@ export default function HomePage() {
   const isMobile = useMediaQuery({ maxDeviceWidth: 1023 });
 
   const jwt = getToken("jwtoken");
-  if (jwt) {
-    useWaqf();
-  }
+
+  useWaqf();
 
   return (
     <main>

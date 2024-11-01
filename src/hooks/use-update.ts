@@ -31,7 +31,7 @@ export const useUpdate = (id:any) => {
 
         getUpdates();
 
-    }, []);
+    }, [id]);
 
     return updates
 }

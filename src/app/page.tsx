@@ -4,7 +4,7 @@ import * as React from "react";
 import HomePage from "./home/page";
 import { Metadata } from "next";
 
-export const metadata: Metadata = {
+const metadata: Metadata = {
   title: "Cwaqf | an Islamic endowment",
   description: "It provide different waqf-funded causes to support",
   viewport: {

@@ -45,7 +45,7 @@ const useSession = () => {
         };
 
         bootstrapAsync();
-    }, [])
+    }, [dispatch])
 }
 
 export { useSession };

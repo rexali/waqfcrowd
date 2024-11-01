@@ -32,7 +32,7 @@ export default function EditWaqf({ params }: { params: { waqfId: any } }) {
 
     const handlePurposeChange = (event: any) => {
         setPurpose(event.target.value);
-    };
+    }
 
     return (
         <ThemeProvider theme={defaultTheme} >
@@ -104,7 +104,7 @@ export default function EditWaqf({ params }: { params: { waqfId: any } }) {
 
 
                             <Grid item xs={12} md={6}>
-                                <FormLabel>Organisation's name</FormLabel>
+                                <FormLabel>Organisation name</FormLabel>
 
                                 <TextField
                                     margin="normal"
@@ -214,7 +214,7 @@ export default function EditWaqf({ params }: { params: { waqfId: any } }) {
 
                             <Grid item xs={12} md={6}>
                                 <Image src={`${BASE_URL}/uploads/${waqf.logo}`} alt={"logo"} width={50} height={50} />
-                                <FormLabel>Campaign or partner's logo</FormLabel>
+                                <FormLabel>Campaign or partner logo</FormLabel>
                                 <TextField
                                     margin='normal'
                                     fullWidth

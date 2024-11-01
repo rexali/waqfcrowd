@@ -27,7 +27,7 @@ export const useProfile = (userId: any) => {
         };
 
         getUserProfile();
-    }, []);
+    }, [userId]);
 
     return result;
 };

@@ -70,7 +70,7 @@ export default function WaqfPage() {
                     <Typography marginTop={2}>Categories</Typography>
                     {isMobile &&
                         <div className={styles.scrollmenu} style={{ borderRadius: 5 }} >
-                            {["All", ...waqfPurposes].map((purpose: any, i: any) => <a href="#" onClick={() => getCategoryCallback(purpose.toLowerCase())} >{purpose}</a>)}
+                            {["All", ...waqfPurposes].map((purpose: any, i: any) => <a href="#" key={i} onClick={() => getCategoryCallback(purpose.toLowerCase())} >{purpose}</a>)}
                         </div>
                     }
                     <Typography marginTop={2}>Support a waqf</Typography>

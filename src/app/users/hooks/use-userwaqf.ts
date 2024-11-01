@@ -27,7 +27,7 @@ export const useUserWaqf = (userId: any) => {
         };
 
         getUserWaqfs();
-    }, []);
+    }, [userId]);
 
     return result;
 };

@@ -31,7 +31,7 @@ export const useFavourite = (userId: any) => {
 
         getFavouriteWaqfs();
 
-    }, []);
+    }, [userId]);
 
     return result;
 };

@@ -97,7 +97,7 @@ export default function CreateWaqf() {
                   required
                   fullWidth
                   id="organisation"
-                  label="Organisation's Name"
+                  label="Organisation Name"
                   name="organisation"
                   type='text'
                 />
@@ -197,7 +197,7 @@ export default function CreateWaqf() {
 
 
               <Grid item xs={12} md={6}>
-                <FormLabel>Campaign or partner's logo</FormLabel>
+                <FormLabel>Campaign or partners logo</FormLabel>
                 <TextField
                   margin='normal'
                   fullWidth

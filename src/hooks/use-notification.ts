@@ -32,7 +32,7 @@ export const useNotification = (notificationId:any) => {
 
     getNotificationData();
 
-  }, []);
+  }, [notificationId]);
 
   return {notification};
 };

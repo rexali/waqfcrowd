@@ -67,7 +67,7 @@ export function useAuth() {
             .catch((err) => setError(err))
             // finally set the loading state to false
             .finally(() => setLoading(false));
-    }, []);
+    }, [dispatch, jwtoken, token]);
 
     return {
         user,

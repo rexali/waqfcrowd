@@ -32,7 +32,7 @@ export const useWaqf = (pageNumber: any = 1) => {
 
         getWaqfData();
 
-    }, [pageNumber]);
+    }, [pageNumber, dispatch]);
 
     return result;
 };

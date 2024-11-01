@@ -34,7 +34,7 @@ export default function FAQHowItWorks() {
                             Your cash waqf (An Islamic endowment in the form of cash) or donation is used to solve a social problem
                             that requires urgent assistance, and parts of the donation is set aside for investment in sharia-compliant investment vehichles,
                             and profit or proceed from the investment is then utilised to fund charitable purposes or causes of your choice. 
-                            You'll continue to earn continous rewards (sadaqatul jarriyah)
+                            You will continue to earn continous rewards (sadaqatul jarriyah)
                             as this cycle is repeated.
                         </Typography>
                         <Typography>

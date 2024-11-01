@@ -10,8 +10,8 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 // TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme();
 
-export default function ConfirmRegistration({result=" Registration success"}:{result:any}) {
-  
+export default function ConfirmRegistration(props:any) {
+
   return (
     <ThemeProvider theme={defaultTheme} >
       <Container component="main" maxWidth="xs">
@@ -22,10 +22,9 @@ export default function ConfirmRegistration({result=" Registration success"}:{re
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-          }}
-        >
+          }}>
           <Typography component="h1" variant="h5">
-            {result}
+            {props.result}
           </Typography>
         </Box>
       </Container>

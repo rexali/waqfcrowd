@@ -33,7 +33,7 @@ export const useSearch = (searchTerm: any) => {
 
         getSearchedData(searchTerm);
 
-    }, []);
+    }, [searchTerm]);
 
     return result;
 };

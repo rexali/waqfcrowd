@@ -33,42 +33,42 @@ export default function SharePopover({ waqfId }: { waqfId: any }) {
         }}
       >
         <Box sx={{ display: "flex", flexDirection: "column", }}>
-          <FacebookShareButton children={
+          <FacebookShareButton url={`https://almubarakwaqf.org/waqfs/${waqfId}`} >
             <div style={{ width: 300, margin: 10, display: "flex", flexDirection: "row", justifyContent: "space-between" }}>
               <FacebookIcon size={25} />
               FACEBOOK
             </div>
-          } url={`https://almubarakwaqf.org/waqfs/${waqfId}`} />
-          <TwitterShareButton children={
-            <div style={{ width: 300, margin: 10, display: "flex", flexDirection: "row", justifyContent: "space-between" }}>
+          </FacebookShareButton>
+          <TwitterShareButton url={`https://almubarakwaqf.org/waqfs/${waqfId}`} >
+          <div style={{ width: 300, margin: 10, display: "flex", flexDirection: "row", justifyContent: "space-between" }}>
               <TwitterIcon size={25} />
               TWITTER
             </div>
-          } url={`https://almubarakwaqf.org/waqfs/${waqfId}`} />
-          <LinkedinShareButton children={
-            <div style={{ width: 300, margin: 10, display: "flex", flexDirection: "row", justifyContent: "space-between" }}>
+          </TwitterShareButton>
+          <LinkedinShareButton url={`https://almubarakwaqf.org/waqfs/${waqfId}`} >
+          <div style={{ width: 300, margin: 10, display: "flex", flexDirection: "row", justifyContent: "space-between" }}>
               <LinkedinIcon size={25} />
               LINKEDIN
             </div>
-          } url={`https://almubarakwaqf.org/waqfs/${waqfId}`} />
-          <WhatsappShareButton children={
-            <div style={{ width: 300, margin: 10, display: "flex", flexDirection: "row", justifyContent: "space-between" }}>
+          </LinkedinShareButton>
+          <WhatsappShareButton url={`https://almubarakwaqf.org/waqfs/${waqfId}`} >
+          <div style={{ width: 300, margin: 10, display: "flex", flexDirection: "row", justifyContent: "space-between" }}>
               <WhatsappIcon size={25} />
               WHATSAPP
             </div>
-          } url={`https://almubarakwaqf.org/waqfs/${waqfId}`} />
-          <EmailShareButton children={
-            <div style={{ width: 300, margin: 10, display: "flex", flexDirection: "row", justifyContent: "space-between" }}>
+          </WhatsappShareButton>
+          <EmailShareButton url={`https://almubarakwaqf.org/waqfs/${waqfId}`} >
+          <div style={{ width: 300, margin: 10, display: "flex", flexDirection: "row", justifyContent: "space-between" }}>
               <EmailIcon size={25} />
               EMAIL
             </div>
-          } url={`https://almubarakwaqf.org/waqfs/${waqfId}`} />
-          <TelegramShareButton children={
-            <div style={{ width: 300, margin: 10, display: "flex", flexDirection: "row", justifyContent: "space-between" }}>
+          </EmailShareButton>
+          <TelegramShareButton url={`https://almubarakwaqf.org/waqfs/${waqfId}`} >
+          <div style={{ width: 300, margin: 10, display: "flex", flexDirection: "row", justifyContent: "space-between" }}>
               <TelegramIcon size={25} />
               TELEGRAM
             </div>
-          } url={`https://almubarakwaqf.org/waqfs/${waqfId}`} />
+          </TelegramShareButton>
 
           <Button onClick={async () => await shareLink(waqfId)} sx={{ width: 315, display: "flex", flexDirection: "row", justifyContent: "space-between" }} startIcon={<Share />}>
             {"OTHERS"}

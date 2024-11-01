@@ -32,7 +32,7 @@ export const useMessage = (messageId:any) => {
 
     getMessageData();
 
-  }, []);
+  }, [messageId]);
 
   return {message};
 };
