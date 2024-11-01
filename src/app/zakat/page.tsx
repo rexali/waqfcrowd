@@ -1,6 +1,7 @@
 import ZakatTabs from "./zakat-tabs"
+import { ZakatTabsComponent } from "./ZakatTabsComponent"
 
 export default function Page() {
-
-    return <ZakatTabs />
+     //<ZakatTabs />
+    return <ZakatTabsComponent />           
 }
