@@ -5,6 +5,7 @@ const handleSubscribeToNewsLetterSubmit = async (event: React.FormEvent<HTMLForm
     const data = new FormData(event.currentTarget);
     try {
         let result = await subscribeToNewsLetter(data.get('email')) as any;
+        console.log(result);
         if (result.affectedRows === 1) {
             console.log("success");
         }

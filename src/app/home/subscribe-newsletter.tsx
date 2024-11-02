@@ -10,7 +10,7 @@ import { handleSubscribeToNewsLetterSubmit } from "./utils/handleSubscribeToNews
 
 export default function SubscribeNewsletter() {
   const isMobile = useMediaQuery({ maxDeviceWidth: 1023 });
-
+ 
     return (
         <center>
             <Box component={"form"} onSubmit={handleSubscribeToNewsLetterSubmit} sx={{ maxWidth: "lg", mt: 5 }} >

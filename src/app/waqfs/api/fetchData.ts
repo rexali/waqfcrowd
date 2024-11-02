@@ -17,7 +17,7 @@ const fetchData = async (url: string, option: any) => {
                 'Authorization': 'Bearer ' + getToken('jwtoken'),
             },
         });
-
+        console.log(await response.json());
         return await response.json();
     } catch (error) {
         console.warn(error);
