@@ -14,10 +14,12 @@ import DonateModal from "@/components/common/donate-modal";
 import DonateForm from "./components/donate-form";
 import styles from "./styles/waqf.module.css";
 import ReactPagination from "@/components/react-pagination";
+import { mockWaqfs } from "@/mocks/waqfs";
 
 export default function WaqfPage() {
+    const waqfmocks = mockWaqfs; // render list
     const [activePage, setActivePage] = React.useState(1);
-    const waqfs = useWaqf(activePage);
+    const waqfs = useWaqf(activePage).length ? useWaqf(activePage) : waqfmocks;
     const [waqfId, setWaqfId] = React.useState();
     const [category, setCategory] = React.useState("all");
     const [open, setOpen] = React.useState(false);
@@ -33,15 +35,15 @@ export default function WaqfPage() {
 
     const isMobile = useMediaQuery({ maxDeviceWidth: 1023 });
 
-    const waqfPurposes = Array.from(new Set(waqfs.map((waqf: any, _: any) => waqf.purpose)));
-    const categoryWaqfs = Array.from(new Set(waqfs.filter((waqf: any, _: any) => waqf.purpose.toLowerCase() === category.toLowerCase())));
+    const waqfPurposes = Array.from(new Set(waqfs.map((waqf: any, _: any) => waqf?.purpose)))??[];
+    const categoryWaqfs = Array.from(new Set(waqfs.filter((waqf: any, _: any) => waqf?.purpose?.toLowerCase() === category?.toLowerCase())))??[];
 
     const getCategoryCallback = (cat: string) => {
         setCategory(cat);
     }
 
 
-    if (!waqfs.length) {
+    if (!waqfs?.length) {
         return (
             <Container sx={{ mt: 8 }} component={"main"} maxWidth="md">
                 <Box textAlign={'center'}>No waqf found</Box>
@@ -58,7 +60,7 @@ export default function WaqfPage() {
     }
 
     return (
-        <Container component={"main"}>
+        <Container component={"main"} style={{minHeight:650}}>
             <Box sx={isMobile ? {} : { display: "flex", flexDirection: "row", justifyContent: "space-between" }}>
                 <Box sx={isMobile ? { display: "none" } : { flex: 1, m: 4 }}>
                     <Paper>
@@ -75,7 +77,7 @@ export default function WaqfPage() {
                     }
                     <Typography marginTop={2}>Support a waqf</Typography>
                     <Grid container spacing={2} columnSpacing={1}>
-                        <WaqfList  waqfs={category === "all" ? waqfs : categoryWaqfs} openCallback={openCallback} />
+                        <WaqfList waqfs={category === "all" ? waqfs : categoryWaqfs} openCallback={openCallback} />
                     </Grid>
                     {open && <DonateModal openCallback={openCallback}><DonateForm waqfId={waqfId} /></DonateModal>}
                 </Box>

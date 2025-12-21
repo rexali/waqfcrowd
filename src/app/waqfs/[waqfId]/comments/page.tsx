@@ -106,7 +106,7 @@ export default function Comments({ params }: { params: { waqfId: string } }) {
     if (!comments.length) {
 
         return (
-            <Container sx={{ mt: 8 }} component={"main"} maxWidth="md">
+            <Container style={{minHeight:"360px",  alignContent:'center'}} sx={{ mt: 8 }} component={"main"} maxWidth="md">
                 <Box textAlign={'center'}>No comments found</Box>
                 {/* comment box start */}
                 {user.userId && renderCommentBox()}

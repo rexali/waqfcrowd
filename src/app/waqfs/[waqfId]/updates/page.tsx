@@ -89,7 +89,7 @@ export default function Updates({ params }: { params: { waqfId: string } }) {
     if (!updates.length) {
 
         return (
-            <Container sx={{ mt: 8 }} component={"main"} maxWidth="md">
+            <Container style={{minHeight:"360px",  alignContent:'center'}} sx={{ mt: 8 }} component={"main"} maxWidth="md">
                 <Box textAlign={'center'}>No updates found</Box>
                 {/* update box start */}
                 {user?.userId === parseInt(waqf.userId as string) && renderUpdateBox()}

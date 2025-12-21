@@ -23,14 +23,17 @@ import { useAuth } from '@/hooks/use-auth';
 import Link from 'next/link';
 import { useGetWaqf } from '../hooks/use-get-waqf';
 import SharePopover from '../components/share-popover';
+import { getMockWaqfById } from '@/mocks/waqfs';
 
 
 export default function ViewWaqf({ params }: { params: { waqfId: string } }) {
 
+    const one = getMockWaqfById(params.waqfId);
     const { user } = useAuth();
     const waqf = useGetWaqf(params.waqfId);
     const isMobile = useMediaQuery({ maxDeviceWidth: 1023 });
     const [open, setOpen] = React.useState(false);
+    let data = Object.keys(waqf).length ? waqf : one;
 
     const openCallback = (val: boolean) => {
         setOpen(val);
@@ -41,25 +44,27 @@ export default function ViewWaqf({ params }: { params: { waqfId: string } }) {
     }
 
     return (
-        <Container >
+        <Container style={{minHeight:"365px"}} >
             <Card style={{ marginTop: isMobile ? 80 : 10 }}>
                 <CardContent sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
                     <Grid container columnSpacing={1}>
 
                         <Grid item xs={12} md={4} textAlign={'center'}>
                             <Image
-                                src="https://placehold.co/250x250/green/white.jpg?text=waqf"
-                                width={250}
-                                height={250}
-                                alt="Picture of the author"
-                                style={{ borderRadius: 20, }}
+                                style={{
+                                    height: 150,
+                                    width: 200,
+                                    borderRadius: 10,
+                                }}
+                                src={require("../../../assets/images/awf-logo.png")}
+                                alt={"picture"}
                             />
                         </Grid>
 
                         <Grid item xs={12} md={8}>
                             {/* <Box> */}
                             <Typography gutterBottom variant="h5" component="div">
-                                {waqf?.name ? waqf.name : ""}
+                                {data?.name ? data.name : ""}
                             </Typography>
 
                             <CardActions  >
@@ -77,7 +82,7 @@ export default function ViewWaqf({ params }: { params: { waqfId: string } }) {
                             </CardActions>
 
                             <Typography variant="body1" color="text.secondary"  >
-                                {waqf?.description ? waqf.description : ""}
+                                {data?.description ? data.description : ""}
                             </Typography>
 
                             <CardActions>
@@ -101,7 +106,6 @@ export default function ViewWaqf({ params }: { params: { waqfId: string } }) {
                     {open && <DonateModal openCallback={openCallback}><DonateForm waqfId={params.waqfId} /></DonateModal>}
                 </CardContent>
             </Card>
-            <Copyright />
         </Container>
     );
 }

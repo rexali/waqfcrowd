@@ -15,16 +15,32 @@ import { useAuth } from '@/hooks/use-auth';
 import styles from './styles/zakat.module.css';
 import { isOnline } from './utils/isOnline';
 import { getToken } from '@/utils/getToken';
+import { calculateZakat } from './utils/calculateZakat';
 
 // TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme();
 
-export default function ZakatCalculator() {
+export default function ZakatCalculator({setPayableZakat}:{setPayableZakat:any}) {
 
-  const [total, setTotal] = React.useState(0);
+  const [total, setTotal] = React.useState<any>();
+  const [formData, setFormData] = React.useState({
+    total_assets: 0,
+    total_liabilities: 0
+  });
 
+
+
+  const handleChange = (evt: any) => {
+    const { name, value } = evt.target
+    setFormData({
+      ...formData,
+      [name]: Number(value)
+    })
+   setTotal('');
+  }
   const getTotal = (value: any) => {
     setTotal(value);
+    setPayableZakat(value);
   }
 
   const { user } = useAuth();
@@ -40,12 +56,12 @@ export default function ZakatCalculator() {
     },
     publicKey: 'pk_live_9522ac67d8f164271cafe16df7fc01b4613af4f7',
     text: 'Pay Now',
-    onSuccess: () => { 
+    onSuccess: () => {
       console.log("Payment success");
     },
-    onClose: () => { 
+    onClose: () => {
       console.warn("Payment failure");
-      
+
     },
   }
 
@@ -66,7 +82,7 @@ export default function ZakatCalculator() {
             Calculate your zakat
           </Typography>
 
-          <Box component="form" onSubmit={(evt) => handleZakatCalcSubmit(evt, getTotal)} noValidate sx={{ mt: 1 }}>
+          <Box component="form"  noValidate sx={{ mt: 1 }}>
 
             <TextField
               margin="normal"
@@ -76,6 +92,7 @@ export default function ZakatCalculator() {
               label="Total Asset"
               name="total_assets"
               autoComplete="number"
+              onChange={handleChange}
               type='number'
               autoFocus
             />
@@ -87,6 +104,7 @@ export default function ZakatCalculator() {
               id="total_liabilities"
               name="total_liabilities"
               label="Total Liabilities"
+              onChange={handleChange}
               type="number"
               autoComplete="number"
             />
@@ -95,10 +113,11 @@ export default function ZakatCalculator() {
               margin="normal"
               required
               fullWidth
+              disabled
               name="net_asset"
-              type='number'
+              // type='number'
               id="net_asset"
-              defaultValue={total}
+              value={total}
             />
 
             <Button
@@ -107,13 +126,17 @@ export default function ZakatCalculator() {
               variant="contained"
               color='info'
               sx={{ mt: 3, mb: 2 }}
+              onClick={(evt) => {
+                evt.preventDefault();
+                getTotal(calculateZakat(formData.total_assets, formData.total_liabilities))
+                // setPayableZakat(calculateZakat(formData.total_assets, formData.total_liabilities))
+              }}
             >
               Calculate
             </Button>
           </Box>
           {isOnline() && <PaystackButton className={styles.paystackbutton} {...paystackProps} />}
         </Box>
-        <Copyright sx={{ mt: 8, mb: 4 }} />
       </Container>
     </ThemeProvider>
   );

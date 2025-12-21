@@ -11,11 +11,15 @@ import Box from "@mui/material/Box";
 import { Button } from "@mui/material";
 import { WaqfContext } from "@/context/WaqfContext";
 import Link from "next/link";
+import { mockWaqfs, getMockWaqfById } from '@/mocks/waqfs';
+
 
 export default function FeaturedWaqfs() {
 
     const [open, setOpen] = React.useState(false);
     const [waqfId, setWaqfId] = React.useState();
+    const waqfmocks = mockWaqfs; // render list
+    
 
     const openCallback = (val: boolean, waqfId: any) => {
         setWaqfId(waqfId);
@@ -23,8 +27,10 @@ export default function FeaturedWaqfs() {
     }
 
     const { state: { waqfs } } = React.useContext(WaqfContext);
+    let data = waqfs.length ? waqfs : waqfmocks
 
-    if (!waqfs.length) {
+
+    if (!data.length) {
 
         return (
             <Container sx={{ mt: 8 }} component={"main"} maxWidth="md">
@@ -33,12 +39,13 @@ export default function FeaturedWaqfs() {
         )
     }
 
+
     return (
         <Container component="main" maxWidth="md" >
             <h2>Featured</h2>
             <Box m={5} >
                 <Grid container spacing={2} columnSpacing={1}>
-                    <WaqfList waqfs={waqfs.slice(0, 2)} openCallback={openCallback} />
+                    <WaqfList waqfs={data.slice(0, 2)} openCallback={openCallback} />
                 </Grid>
             </Box>
             {open && <DonateModal openCallback={openCallback}><DonateForm waqfId={waqfId} /></DonateModal>}

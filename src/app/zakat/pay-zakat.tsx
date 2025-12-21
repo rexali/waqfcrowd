@@ -15,7 +15,7 @@ import { handlePayZakatSubmit } from './utils/handlePayZakatsubmit';
 // TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme();
 
-export default function PayZakat() {
+export default function PayZakat({payable}:{payable:any}) {
 
   return (
     <ThemeProvider theme={defaultTheme} >
@@ -42,7 +42,8 @@ export default function PayZakat() {
               label="Zakat Amount"
               name="amount"
               autoComplete="number"
-              type='number'
+              // type='number'
+              defaultValue={payable}
               autoFocus
             />
             <TextField
@@ -80,7 +81,6 @@ export default function PayZakat() {
 
           </Box>
         </Box>
-        <Copyright sx={{ mt: 8, mb: 4 }} />
       </Container>
     </ThemeProvider>
   );

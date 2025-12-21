@@ -50,6 +50,7 @@ function a11yProps(index: number) {
 export default function ZakatTabs() {
   const theme = useTheme();
   const [value, setValue] = React.useState(0);
+  const [payableZakat,setPayableZakat]=React.useState(0)
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
@@ -83,11 +84,11 @@ export default function ZakatTabs() {
         onChangeIndex={handleChangeIndex}
       >
         <TabPanel value={value} index={0} dir={theme.direction}>
-          <ZakatCalculator />
+          <ZakatCalculator setPayableZakat={setPayableZakat} />
         </TabPanel>
 
         <TabPanel value={value} index={1} dir={theme.direction}>
-          <PayZakat />
+          <PayZakat payable={payableZakat} />
         </TabPanel>
 
         <TabPanel value={value} index={2} dir={theme.direction}>

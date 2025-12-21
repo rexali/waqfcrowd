@@ -5,6 +5,7 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Unstable_Grid2';
 import Container from "@mui/material/Container";
 import Link from "next/link";
+import Copyright from "./copyright";
 
 export default function BottomNavigation() {
 
@@ -33,6 +34,8 @@ export default function BottomNavigation() {
 
     return (
         <Container component="main" maxWidth="lg" sx={{ mt: 5, mb: 5 }} >
+            <Copyright />
+
             <Box sx={{ position: "relative", bottom: 0, left: 0, right: 0, m: 1, }}>
                 <Grid container spacing={1}>
                     {renderGridItems}

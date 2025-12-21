@@ -1,7 +1,7 @@
 
 export default function PrivacyPage() {
     return (
-      <main>
+      <main style={{minHeight:"360px",  alignContent:'center'}}>
         Privacy Policy
       </main>
     )

@@ -48,8 +48,8 @@ export default function DonateForm({ waqfId }: { waqfId: any }) {
                     }}
                 >
                     <Typography component="h1" variant="h5" >
-                        Bank details: donate now
-                    </Typography>
+                        Bank Details: Donate Now
+                    </Typography><br /><br />
 
                     <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
 

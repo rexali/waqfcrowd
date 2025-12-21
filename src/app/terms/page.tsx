@@ -1,6 +1,6 @@
 export default function TermPage() {
     return (
-      <main>
+      <main style={{minHeight:"360px",  alignContent:'center'}}>
         Terms and Conditions
       </main>
     )

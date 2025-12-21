@@ -15,7 +15,7 @@ export default function Notifications() {
     if (!notifications.length) {
 
         return (
-            <Container sx={{ mt: 8 }} component={"main"} maxWidth="md">
+            <Container style={{minHeight:"360px",  alignContent:'center'}} sx={{ mt: 8 }} component={"main"} maxWidth="md">
                 <Box textAlign={'center'}>No notification(s) found</Box>
             </Container>
         )
@@ -23,7 +23,7 @@ export default function Notifications() {
 
     return (
         <ProtectedRoute>
-            <Container sx={{ mt: 8 }} component={"main"} maxWidth="md">
+            <Container style={{minHeight:"360px"}} sx={{ mt: 8 }} component={"main"} maxWidth="md">
                 <Grid container columnSpacing={1}>
                     <NotificationList notifications={notifications} />
                 </Grid>

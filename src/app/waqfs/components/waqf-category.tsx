@@ -11,9 +11,9 @@ export default function WaqfCategory({ purposes = [], getCategoryCallback }: { p
             {"all".toUpperCase()}
         </Link>
         {
-            purposes.map((purpose: any, index: any) => (
+            purposes?.map((purpose: any, index: any) => (
                 <Link key={index} href={"#"} style={{ textDecoration: "none", margin: 10 }} onClick={() => getCategoryCallback(purpose.toUpperCase())}>
-                    {purpose.toUpperCase()}
+                    {purpose?.toUpperCase()}
                 </Link>))
         }
     </Box>
