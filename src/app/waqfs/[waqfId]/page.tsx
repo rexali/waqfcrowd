@@ -72,6 +72,7 @@ export default function ViewWaqf({ params }: { params: { waqfId: string } }) {
                                 <SharePopover waqfId={params.waqfId} />
                                 <Button
                                     size="small"
+                                    style={{fontSize:8 }}
                                     onClick={() => saveFavouriteWaqf({
                                         userId: user.userId,
                                         waqfId: params.waqfId,
@@ -86,18 +87,18 @@ export default function ViewWaqf({ params }: { params: { waqfId: string } }) {
                             </Typography>
 
                             <CardActions>
-                                <Button href='' size="small" className={styles.cardbutton} onClick={() => supportWaqf(true)} startIcon={<MoneyIcon />}>Support</Button>
+                                <Button href='' size="small" style={{fontSize:8 }} className={styles.cardbutton} onClick={() => supportWaqf(true)} startIcon={<MoneyIcon />}>Support</Button>
                                 <Button href='' size="small" className={styles.cardbutton} startIcon={<UpdateIcon />}>
                                     <Link href={{
                                         pathname: `/waqfs/${params.waqfId}/updates`,
                                     }}
-                                        style={{ textDecoration: "none" }}
+                                        style={{ textDecoration: "none", fontSize:8 }}
                                     >Update(s)</Link>
                                 </Button>
                                 <Button size="small" className={styles.cardbutton} startIcon={<CommentIcon />}>
                                     <Link href={{
                                         pathname: `/waqfs/${params.waqfId}/comments`,
-                                    }} style={{ textDecoration: "none" }}>Comments</Link>
+                                    }} style={{ textDecoration: "none", fontSize:8 }}>Comments</Link>
                                 </Button>
                             </CardActions>
                             {/* </Box> */}

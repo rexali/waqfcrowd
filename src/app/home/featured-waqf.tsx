@@ -50,7 +50,7 @@ export default function FeaturedWaqfs() {
             </Box>
             {open && <DonateModal openCallback={openCallback}><DonateForm waqfId={waqfId} /></DonateModal>}
             <Box m={5} textAlign='center' >
-                <Link href="/waqfs" prefetch style={{ borderRadius: 10, color: "white", textDecoration: "none", padding: 10, backgroundColor: "green" }}>VIEW MORE</Link>
+                <Link href="/waqfs" prefetch style={{ borderRadius: 10, color: "#07609cff", textDecoration: "none", padding: 10}}>VIEW MORE</Link>
             </Box>
         </Container>
     )

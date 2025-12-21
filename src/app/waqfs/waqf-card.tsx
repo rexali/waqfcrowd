@@ -43,7 +43,7 @@ function WaqfCard({
   function supportWaqf(value: boolean, waqfId?: any) {
     openCallback(value, waqfId);
   }
-  
+
   const userLike = waqf.userIds.includes(user.userId);
 
   return (
@@ -95,31 +95,31 @@ function WaqfCard({
           {waqf.description ? waqf.description.slice(0, 100) + "..." : ""}
         </Typography>
         <Typography variant="body2" color="text.primary">
-          ......................................................................
-        </Typography>
-        <Typography>Donation: N{waqf.totalDonation ? waqf.totalDonation : 6} of {waqf.expectedAmount ? waqf.expectedAmount : 23} </Typography>
+          {/* ...................................................................... */}
+        </Typography><br />
+        <Typography fontSize={10}>Donation: N{waqf.totalDonation ? waqf.totalDonation : 6} of {waqf.expectedAmount ? waqf.expectedAmount : 23} </Typography>
       </CardContent>
       <CardActions sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-around' }}>
         <Button href='' size="small" className={styles.cardbutton} onClick={() => supportWaqf(true, waqf.waqfId)} startIcon={<MoneyIcon />}>
-          <span style={{ textDecoration: "none", display: 'flex', flexDirection: 'column' }}>Support<span>{waqf.updatesNo}</span></span>
+          <span style={{ fontSize: 8, textDecoration: "none", display: 'flex', flexDirection: 'column' }}>Support<span>{waqf.updatesNo === 0 ? '' : waqf.updatesNo}</span></span>
         </Button>
         <Button href='' size="small" className={styles.cardbutton} startIcon={<UpdateIcon />}>
           <Link href={{
             pathname: `/waqfs/${waqf.waqfId}/updates`,
           }}
-            style={{ textDecoration: "none", display: 'flex', flexDirection: 'column' }}
-            prefetch>Updates<span>{waqf.updatesNo}</span></Link>
+            style={{ fontSize: 8, textDecoration: "none", display: 'flex', flexDirection: 'column' }}
+            prefetch>Updates<span>{!(waqf.updatesNo === 0) ? waqf.updatesNo : ''}</span></Link>
         </Button>
         <Button size="small" className={styles.cardbutton} startIcon={<CommentIcon />}>
           <Link href={{
             pathname: `/waqfs/${waqf.waqfId}/comments`,
-          }} style={{ textDecoration: "none", display: 'flex', flexDirection: 'column' }} prefetch>Comments <span>{waqf.commentsNo}</span></Link>
+          }} style={{ fontSize: 8, textDecoration: "none", display: 'flex', flexDirection: 'column' }} prefetch>Comments <span>{waqf.commentsNo === 0 ? '' : waqf.commentsNo}</span></Link>
         </Button>
         {waqf.userId === user.userId &&
           (<Button size="small" className={styles.cardbutton} startIcon={<EditIcon />}>
             <Link href={{
               pathname: `/waqfs/${waqf.waqfId}/edit`,
-            }} style={{ textDecoration: "none" }} prefetch>Edit</Link>
+            }} style={{ fontSize: 8, textDecoration: "none" }} prefetch>Edit</Link>
           </Button>)
         }
       </CardActions>

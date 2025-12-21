@@ -21,12 +21,25 @@ import { handleSignOut } from '@/app/auth/utils/handleSignOut';
 import Link from 'next/link';
 import { useAuth } from '@/hooks/use-auth';
 import { BASE_URL } from '@/constants/url';
-import { Avatar } from '@mui/material';
+import { Avatar, createTheme, ThemeProvider } from '@mui/material';
 
 
-const pages = ['About', "Services", 'Contact', 'News', 'Resources', "Zakat", 'Waqf'];
+const pages = ['About', "Services", 'Contact', 'News', 'Resources', "Zakat", 'Waqfs'];
 
 const menus = ['Users', 'Messages', "Notifications", 'Settings', 'Logout'];
+
+
+const lightTheme = createTheme({
+  palette: {
+    mode: 'light',
+    primary: {
+      main: '#07609cff'
+    },
+    secondary: {
+      main: '#165a24ff'
+    }
+  }
+});
 
 function NavBar() {
 
@@ -64,130 +77,134 @@ function NavBar() {
 
   const isMobile = useMediaQuery({ maxDeviceWidth: 1023 });
 
-  return <AppBar position={isMobile ? "fixed" : "static"} sx={{ backgroundColor: '#6232a8' }}>
-    <Container maxWidth={"xl"}>
-      <Toolbar disableGutters>
-        {!isMobile && <AWFLogo />}
-        <Link prefetch href={'/'} style={{ display: isMobile ? "none" : '', fontSize: 18, textDecoration: 'none', color: 'white', marginRight: 5, letterSpacing: '.1rem', fontWeight: 700, }} >
-          Cwaqf
-        </Link>
-        <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-          <IconButton
-            size="large"
-            aria-label="account of current user"
-            aria-controls="menu-appbar"
-            aria-haspopup="true"
-            onClick={handleOpenNavMenu}
-            color="inherit"
-          >
-            <MenuIcon />
-          </IconButton>
-          <Menu
-            id="menu-appbar"
-            anchorEl={anchorElNav}
-            anchorOrigin={{
-              vertical: 'bottom',
-              horizontal: 'left',
-            }}
-            keepMounted
-            transformOrigin={{
-              vertical: 'top',
-              horizontal: 'left',
-            }}
-            open={Boolean(anchorElNav)}
-            onClose={handleCloseNavMenu}
-            sx={{
-              display: { xs: 'block', md: 'none' },
-            }}
-          >
-            {pages.map((page, index) => (
-              <MenuItem key={index + "me"} onClick={handleCloseNavMenu}>
-                {<Link prefetch key={index + "li"} style={{ textDecoration: "none" }} href={`/${page.toLowerCase()}`}>{page}</Link>}
-              </MenuItem>
-            ))}
-          </Menu>
-        </Box>
-        <Typography
-          variant="h5"
-          noWrap
-          component="a"
-          href="/"
-          sx={{
-            mr: 2,
-            display: { xs: 'flex', md: 'none' },
-            flexGrow: 1,
-            fontFamily: 'monospace',
-            fontWeight: 700,
-            letterSpacing: '.1rem',
-            color: 'inherit',
-            textDecoration: 'none',
-          }}
-        >
-          Cwaqf
-        </Typography>
-        <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-          {pages.map((page, index) => (<Link prefetch
-            key={index + "p"}
-            onClick={() => { handleCloseNavMenu }}
-            href={`/${page === "Waqf" ? "waqfs" : page.toLowerCase()}`}
-            style={{ margin: 4, color: 'white', display: 'block', textDecoration: "none", fontSize: 18 }}
-          >
-            {page}
-          </Link>
-          ))}
-        </Box>
-        {/* Messages component */}
-        {!isMobile && <Link prefetch href={'/messages'} style={{ marginRight: 16 }} ><Message sx={{ color: "white" }} /></Link>}
-        {/* Notification component */}
-        {!isMobile && <Link prefetch href='/notifications' style={{ marginRight: 16 }} ><Notifications sx={{ color: "white" }} /></Link>}
-        {/* serach component added */}
-        {!isMobile && <SearchItem />}
-        <Box sx={{ flexGrow: 0 }}>
-          <Tooltip title="Open menu">
-            <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-              {user.photo ? <Image
-                src={`${BASE_URL}/uploads/${user.photo}`}
-                width={40}
-                height={40}
-                alt="Account"
-                style={{ borderRadius: 20 }}
-              /> :<Avatar />
-              }
-            </IconButton>
-          </Tooltip>
-          <Menu
-            sx={{ mt: '45px' }}
-            id="menu-appbar"
-            anchorEl={anchorElUser}
-            anchorOrigin={{
-              vertical: 'top',
-              horizontal: 'right',
-            }}
-            keepMounted
-            transformOrigin={{
-              vertical: 'top',
-              horizontal: 'right',
-            }}
-            open={Boolean(anchorElUser)}
-            onClose={handleCloseUserMenu}
-          >
-            <MenuItem key={"signin"} onClick={handleCloseUserMenu}>
-              <Link prefetch style={{ textDecoration: "none" }} href={`/auth/signin`}>Sign In</Link>
-            </MenuItem>
+  return (
+    <ThemeProvider theme={lightTheme}>
+      <AppBar position={isMobile ? "fixed" : "static"} >
+        <Container maxWidth={"xl"}>
+          <Toolbar disableGutters>
+            {!isMobile && <AWFLogo />}
+            <Link prefetch href={'/'} style={{ display: isMobile ? "none" : '', fontSize: 14, textDecoration: 'none', color: 'white', marginRight: 5, letterSpacing: '.4rem', fontWeight: 400, }} >
+              Cwaqf
+            </Link>
+            <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+              <IconButton
+                size="large"
+                aria-label="account of current user"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                onClick={handleOpenNavMenu}
+                color="inherit"
+              >
+                <MenuIcon />
+              </IconButton>
+              <Menu
+                id="menu-appbar"
+                anchorEl={anchorElNav}
+                anchorOrigin={{
+                  vertical: 'bottom',
+                  horizontal: 'left',
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'left',
+                }}
+                open={Boolean(anchorElNav)}
+                onClose={handleCloseNavMenu}
+                sx={{
+                  display: { xs: 'block', md: 'none' },
+                }}
+              >
+                {pages.map((page, index) => (
+                  <MenuItem key={index + "me"} onClick={handleCloseNavMenu}>
+                    {<Link prefetch key={index + "li"} style={{ textDecoration: "none", color: 'black' }} href={`/${page.toLowerCase()}`}>{page}</Link>}
+                  </MenuItem>
+                ))}
+              </Menu>
+            </Box>
+            <Typography
+              variant="h5"
+              noWrap
+              component="a"
+              href="/"
+              sx={{
+                mr: 2,
+                display: { xs: 'flex', md: 'none' },
+                flexGrow: 1,
+                fontFamily: 'monospace',
+                fontWeight: 400,
+                letterSpacing: '.4rem',
+                color: 'inherit',
+                textDecoration: 'none',
+              }}
+            >
+              Cwaqf
+            </Typography>
+            <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+              {pages.map((page, index) => (<Link prefetch
+                key={index + "p"}
+                onClick={() => { handleCloseNavMenu }}
+                href={`/${page === "Waqf" ? "waqfs" : page.toLowerCase()}`}
+                style={{ margin: 4, color: 'white', display: 'block', textDecoration: "none", fontSize: 14 }}
+              >
+                {page}
+              </Link>
+              ))}
+            </Box>
+            {/* Messages component */}
+            {!isMobile && <Link prefetch href={'/messages'} style={{ marginRight: 16 }} ><Message sx={{ color: "white" }} /></Link>}
+            {/* Notification component */}
+            {!isMobile && <Link prefetch href='/notifications' style={{ marginRight: 16 }} ><Notifications sx={{ color: "white" }} /></Link>}
+            {/* serach component added */}
+            {!isMobile && <SearchItem />}
+            <Box sx={{ flexGrow: 0 }}>
+              <Tooltip title="Open menu">
+                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                  {user.photo ? <Image
+                    src={`${BASE_URL}/uploads/${user.photo}`}
+                    width={40}
+                    height={40}
+                    alt="Account"
+                    style={{ borderRadius: 20 }}
+                  /> : <Avatar />
+                  }
+                </IconButton>
+              </Tooltip>
+              <Menu
+                sx={{ mt: '45px' }}
+                id="menu-appbar"
+                anchorEl={anchorElUser}
+                anchorOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                open={Boolean(anchorElUser)}
+                onClose={handleCloseUserMenu}
+              >
+                <MenuItem key={"signin"} onClick={handleCloseUserMenu}>
+                  <Link prefetch style={{ textDecoration: "none", color: 'black' }} href={`/auth/signin`}>Sign In</Link>
+                </MenuItem>
 
-            <MenuItem key={"signup"} onClick={handleCloseUserMenu}>
-              <Link style={{ textDecoration: "none" }} href={`/auth/signup`}>Sign Up</Link>
-            </MenuItem>
+                <MenuItem key={"signup"} onClick={handleCloseUserMenu}>
+                  <Link style={{ textDecoration: "none", color: 'black' }} href={`/auth/signup`}>Sign Up</Link>
+                </MenuItem>
 
-            {menus.map((menu, index) => (
-              <MenuItem key={menu} onClick={handleCloseUserMenu}>
-                {(menu === "Logout") ? <Link prefetch onClick={handleSignOut} style={{ textDecoration: "none" }} key={index + "s"} href={'#'} >{menu}</Link> : menu === "Users" ? <Link prefetch style={{ textDecoration: "none" }} key={index + "s"} href={`/${menu.toLowerCase()}`}>{"Account"}</Link> : <Link prefetch style={{ textDecoration: "none" }} key={index + "s"} href={`/${menu.toLowerCase()}`}>{menu}</Link>}
-              </MenuItem>
-            ))}
-          </Menu>
-        </Box>
-      </Toolbar>
-    </Container>
-  </AppBar>
+                {menus.map((menu, index) => (
+                  <MenuItem key={menu} onClick={handleCloseUserMenu}>
+                    {(menu === "Logout") ? <Link prefetch onClick={handleSignOut} style={{ textDecoration: "none", color: 'black' }} key={index + "s"} href={'#'} >{menu}</Link> : menu === "Users" ? <Link prefetch style={{ textDecoration: "none", color: 'black' }} key={index + "s"} href={`/${menu.toLowerCase()}`}>{"Account"}</Link> : <Link prefetch style={{ textDecoration: "none", color: 'black' }} key={index + "s"} href={`/${menu.toLowerCase()}`}>{menu}</Link>}
+                  </MenuItem>
+                ))}
+              </Menu>
+            </Box>
+          </Toolbar>
+        </Container>
+      </AppBar>
+    </ThemeProvider>
+  )
 }
 export default NavBar;

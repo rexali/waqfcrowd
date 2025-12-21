@@ -61,23 +61,23 @@ export default function WaqfPage() {
     }
 
     return (
-        <Container component={"main"} style={{minHeight:650}}>
+        <Container component={"main"}   style={{minHeight:650}}>
             <Box sx={isMobile ? {} : { display: "flex", flexDirection: "row", justifyContent: "space-between" }}>
                 <Box sx={isMobile ? { display: "none" } : { flex: 1, m: 4 }}>
                     <Paper>
-                        <Typography component={"h1"} variant="h6" sx={{ m: 1, fontSize: 14 }}>WAQF FUND CATEGORY</Typography>
+                        <Typography component={"h1"} variant="h6" sx={{ m: 1, fontSize: 11 }}>CATEGORY</Typography>
                         <WaqfCategory purposes={waqfPurposes} getCategoryCallback={getCategoryCallback} />
                     </Paper>
                 </Box>
                 <Box sx={isMobile ? { marginTop: 8 } : { flex: 3, m: 2 }}>
-                    <Typography marginTop={2}>Categories</Typography>
+                    <Typography marginTop={2} fontSize={11}>CATEGORY</Typography><br />
                     {isMobile &&
-                        <div className={styles.scrollmenu} style={{ borderRadius: 5 }} >
-                            {["All", ...waqfPurposes].map((purpose: any, i: any) => <a href="#" key={i} onClick={() => getCategoryCallback(purpose.toLowerCase())} >{purpose}</a>)}
+                        <div className={styles.scrollmenu} style={{ borderRadius: 5}} >
+                            {["All", ...waqfPurposes].map((purpose: any, i: any) => <a href="#" style={{fontSize:11}}  key={i} onClick={() => getCategoryCallback(purpose.toLowerCase())} >{purpose}</a>)}
                         </div>
                     }
-                    <Typography marginTop={2}>Support a waqf</Typography>
-                    <Grid container spacing={2} columnSpacing={1}>
+                    <Typography marginTop={2} fontSize={11}>SUPPORT AWQAF</Typography>
+                    <Grid container spacing={2} columnSpacing={1} sx={{marginLeft:'auto', marginRight:'auto'}}>
                         <WaqfList waqfs={category === "all" ? waqfs : categoryWaqfs} openCallback={openCallback} />
                     </Grid>
                     {open && <DonateModal openCallback={openCallback}><DonateForm waqfId={waqfId} /></DonateModal>}

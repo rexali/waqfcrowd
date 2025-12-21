@@ -11,6 +11,7 @@ import Box from '@mui/material/Box';
 import ZakatCalculator from './zakat-calculator';
 import PayZakat from './pay-zakat';
 import NewsPage from '../news/page';
+import { useMediaQuery } from 'react-responsive';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -50,7 +51,9 @@ function a11yProps(index: number) {
 export default function ZakatTabs() {
   const theme = useTheme();
   const [value, setValue] = React.useState(0);
-  const [payableZakat,setPayableZakat]=React.useState(0)
+  const [payableZakat, setPayableZakat] = React.useState(0)
+  const isMobile = useMediaQuery({ maxDeviceWidth: 1023 });
+
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
@@ -58,10 +61,10 @@ export default function ZakatTabs() {
 
   const handleChangeIndex = (index: number) => {
     setValue(index);
-  }; 
+  };
 
   return (
-    <Box sx={{ bgcolor: 'background.paper', }}>
+    <Box sx={{ bgcolor: 'background.paper', marginTop: isMobile ? 8 : '' }}>
 
       <AppBar position="static" sx={{ bgcolor: "white", color: 'black' }}>
         <Tabs
@@ -94,7 +97,7 @@ export default function ZakatTabs() {
         <TabPanel value={value} index={2} dir={theme.direction}>
           <NewsPage />
         </TabPanel>
-        
+
       </SwipeableViews>
     </Box>
   );
