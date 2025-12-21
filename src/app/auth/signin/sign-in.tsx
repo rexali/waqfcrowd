@@ -46,7 +46,7 @@ export default function SignIn() {
             Sign in
           </Typography>
           <Box component="form"
-            onSubmit={(evt) => handleLoginSubmit(evt,setLoading,setSuccess, setError, "/users")}
+            onSubmit={(evt) => handleLoginSubmit(evt, setLoading, setSuccess, setError, "/users")}
             noValidate sx={{ mt: 1 }}>
             <TextField
               margin="normal"
@@ -86,7 +86,7 @@ export default function SignIn() {
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
-              color='info'
+              style={{ backgroundColor: '#07609cff' }}
             >
               Sign In
             </Button>
@@ -104,7 +104,6 @@ export default function SignIn() {
             </Grid>
           </Box>
         </Box>
-        <Copyright sx={{ mt: 8, mb: 4 }} />
       </Container>
     </ThemeProvider>
   );

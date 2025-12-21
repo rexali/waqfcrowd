@@ -40,7 +40,6 @@ export default function HomePage() {
       <Team />
       <Partners />
       <SubscribeNewsletter />
-      <Copyright sx={{ mt: 4, mb: 4 }} />
     </main>
   );
 }

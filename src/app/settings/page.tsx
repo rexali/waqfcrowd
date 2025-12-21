@@ -13,7 +13,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 const defaultTheme = createTheme();
 
 export default function SignIn() {
-  
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -35,7 +35,7 @@ export default function SignIn() {
             alignItems: 'center',
           }}
         >
-        
+
           <Typography component="h1" variant="h5">
             Change password
           </Typography>
@@ -65,7 +65,7 @@ export default function SignIn() {
               type="submit"
               fullWidth
               variant="contained"
-              color='success'
+              style={{ backgroundColor: "#07609cff" }}
               sx={{ mt: 3, mb: 2 }}
             >
               Change

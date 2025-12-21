@@ -13,7 +13,7 @@ export default function WaqfCategory({ purposes = [], getCategoryCallback }: { p
         {
             purposes?.map((purpose: any, index: any) => (
                 <Link key={index} href={"#"} style={{ textDecoration: "none", margin: 10,fontSize:11 }} onClick={() => getCategoryCallback(purpose.toUpperCase())}>
-                    {purpose?.toUpperCase()}
+                    {purpose?.toUpperCase()}p
                 </Link>))
         }
     </Box>

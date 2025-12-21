@@ -92,7 +92,7 @@ export default function SignIn() {
               type="submit"
               fullWidth
               variant="contained"
-              color='success'
+              style={{backgroundColor:"#07609cff"}}
               sx={{ mt: 3, mb: 2 }}
             >
               Send
@@ -100,7 +100,6 @@ export default function SignIn() {
 
           </Box>
         </Box>
-        <Copyright sx={{ mt: 8, mb: 4 }} />
       </Container>
     </ThemeProvider>
   );

@@ -57,7 +57,7 @@ export default function ForgetPassword() {
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
-              color='success'
+              style={{ backgroundColor: '#07609cff' }}
             >
               Submit
             </Button>

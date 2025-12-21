@@ -1,6 +1,6 @@
 export default function SiteMapPage() {
     return (
-      <main>
+      <main style={{minHeight:"360px",  alignContent:'center', textAlign:'center'}}>
         Site map
       </main>
     )

@@ -66,6 +66,7 @@ export default function ChangePassword() {
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
+              style={{ backgroundColor: '#07609cff' }}
             >
               Change
             </Button>

@@ -18,29 +18,31 @@ export default function BottomNavigation() {
         "Zakat",
         "Waqf",
         "Site map",
-        "Privacy policy",
-        "Terms and Conditions"
+        "Privacy",
+        "Terms"
     ];
 
-    const renderGridItems = pages.map((page, index) => (<Grid xs={12} md={6} sx={{ textAlign: "center" }} key={index}>
+    const renderGridItems = pages.map((page, index) => (<Grid xs={4} md={4} sx={{ textAlign: "start" }} key={index}>
         <Link
             type="button"
             color="success"
-            href={`${page === "Waqf" ? "/waqfs" : page === "Home" ? "/" : page === "Privacy policy" ? "/privacy" : page === 'Site map' ? "/sitemap" : page === "Terms and Conditions" ? "/terms" : "/" + page.toLocaleLowerCase()}`}
+            style={{ textDecoration: 'none', color: "white" }}
+            href={`${page === "Waqf" ? "/waqfs" : page === "Home" ? "/" : page === "Privacy" ? "/privacy" : page === 'Site map' ? "/sitemap" : page === "Terms" ? "/terms" : "/" + page.toLocaleLowerCase()}`}
         >
             {page}
         </Link>
     </Grid>))
 
     return (
-        <Container component="main" maxWidth="lg" sx={{ mt: 5, mb: 5 }} >
+        <Container component="main" maxWidth={false}>
+            <Container component="main" maxWidth="lg" sx={{ mt: 5, mb: 5, backgroundColor: "#07609cff" }} >
+                <Box sx={{ position: "relative", bottom: 0, left: 0, right: 0, ml: 1 }}>
+                    <Grid container spacing={1} sx={{ textAlign: 'center' }}>
+                        {renderGridItems}
+                    </Grid>
+                </Box>
+            </Container>
             <Copyright />
-
-            <Box sx={{ position: "relative", bottom: 0, left: 0, right: 0, m: 1, }}>
-                <Grid container spacing={1}>
-                    {renderGridItems}
-                </Grid>
-            </Box>
         </Container>
     )
 }

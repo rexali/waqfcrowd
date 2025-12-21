@@ -112,7 +112,9 @@ export default function SignUp() {
                             fullWidth
                             variant="contained"
                             sx={{ mt: 3, mb: 2 }}
-                            color='info'
+                            style={{ backgroundColor: '#07609cff' }}
+
+
                         >
                             Sign Up
                         </Button>
@@ -125,7 +127,6 @@ export default function SignUp() {
                         </Grid>
                     </Box>
                 </Box>
-                <Copyright sx={{ mt: 5 }} />
             </Container>
         </ThemeProvider>
     );

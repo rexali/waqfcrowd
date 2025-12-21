@@ -62,7 +62,7 @@ export default function WaqfPage() {
 
     return (
         <Container component={"main"}   style={{minHeight:650}}>
-            <Box sx={isMobile ? {} : { display: "flex", flexDirection: "row", justifyContent: "space-between" }}>
+            <Box sx={isMobile ? {marginLeft:'auto',marginRight:'auto'} : { display: "flex", flexDirection: "row", justifyContent: "space-between" }}>
                 <Box sx={isMobile ? { display: "none" } : { flex: 1, m: 4 }}>
                     <Paper>
                         <Typography component={"h1"} variant="h6" sx={{ m: 1, fontSize: 11 }}>CATEGORY</Typography>
