@@ -19,7 +19,8 @@ import { mockWaqfs } from "@/mocks/waqfs";
 export default function WaqfPage() {
     const waqfmocks = mockWaqfs; // render list
     const [activePage, setActivePage] = React.useState(1);
-    const waqfs = useWaqf(activePage).length ? useWaqf(activePage) : waqfmocks;
+    const waqfx = useWaqf(activePage);
+    const waqfs = waqfx.length ? waqfx: waqfmocks;
     const [waqfId, setWaqfId] = React.useState();
     const [category, setCategory] = React.useState("all");
     const [open, setOpen] = React.useState(false);
