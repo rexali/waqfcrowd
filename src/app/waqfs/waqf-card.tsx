@@ -19,6 +19,7 @@ import { saveFavouriteWaqf } from './api/saveFavouriteWaqf';
 import { useAuth } from '@/hooks/use-auth';
 import styles from "./styles/waqf-card.module.css";
 import SharePopover from './components/share-popover';
+import { getCommentsByWaqfId } from '@/mocks';
 
 function WaqfCard({
   waqf,
@@ -44,7 +45,7 @@ function WaqfCard({
     openCallback(value, waqfId);
   }
 
-  const userLike = waqf.userIds.includes(user.userId);
+  const userLike = waqf?.userIds?.includes(user.userId);
 
   return (
     <Card sx={{ maxWidth: 320, marginTop: 2 }}>
@@ -101,19 +102,19 @@ function WaqfCard({
       </CardContent>
       <CardActions sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-around' }}>
         <Button href='' size="small" className={styles.cardbutton} onClick={() => supportWaqf(true, waqf.waqfId)} startIcon={<MoneyIcon />}>
-          <span style={{ fontSize: 8, textDecoration: "none", display: 'flex', flexDirection: 'column' }}>Support<span>{waqf.updatesNo === 0 ? '' : waqf.updatesNo}</span></span>
+          <span style={{ fontSize: 8, textDecoration: "none", display: 'flex', flexDirection: 'column' }}>Support<span>{waqf.updatesNo}</span></span>
         </Button>
         <Button href='' size="small" className={styles.cardbutton} startIcon={<UpdateIcon />}>
           <Link href={{
             pathname: `/waqfs/${waqf.waqfId}/updates`,
           }}
             style={{ fontSize: 8, textDecoration: "none", display: 'flex', flexDirection: 'column' }}
-            prefetch>Updates<span>{!(waqf.updatesNo === 0) ? waqf.updatesNo : ''}</span></Link>
+            prefetch>Updates<span>{waqf.updatesNo}</span></Link>
         </Button>
         <Button size="small" className={styles.cardbutton} startIcon={<CommentIcon />}>
           <Link href={{
             pathname: `/waqfs/${waqf.waqfId}/comments`,
-          }} style={{ fontSize: 8, textDecoration: "none", display: 'flex', flexDirection: 'column' }} prefetch>Comments <span>{waqf.commentsNo === 0 ? '' : waqf.commentsNo}</span></Link>
+          }} style={{ fontSize: 8, textDecoration: "none", display: 'flex', flexDirection: 'column' }} prefetch>Comments <span>{waqf.commentsNo}</span></Link>
         </Button>
         {waqf.userId === user.userId &&
           (<Button size="small" className={styles.cardbutton} startIcon={<EditIcon />}>

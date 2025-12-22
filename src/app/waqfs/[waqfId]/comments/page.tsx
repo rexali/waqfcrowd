@@ -17,12 +17,14 @@ import DonateForm from '../../components/donate-form';
 import { useWaqfComment } from './hooks/use-waqf-comment';
 import { useGetWaqf } from '../../hooks/use-get-waqf';
 import { savePathLink } from '@/utils/savePathLink';
+import { getCommentsByWaqfId, getMockWaqfById } from '@/mocks';
 
 export default function Comments({ params }: { params: { waqfId: string } }) {
 
     const { user } = useAuth();
 
-    const waqf = useGetWaqf(params.waqfId);
+    const waqfx = useGetWaqf(params.waqfId);
+    const waqf = Object.keys(waqfx).length ? waqfx : getMockWaqfById(params.waqfId)
 
     const [comment, setComment] = React.useState('');
 
@@ -32,7 +34,9 @@ export default function Comments({ params }: { params: { waqfId: string } }) {
         setOpen(true)
     }
 
-    const comments = useWaqfComment(params.waqfId, comment);
+    const commentx = useWaqfComment(params.waqfId, comment);
+    const comments = commentx.length ? commentx : getCommentsByWaqfId(params.waqfId)
+
 
     const handleCommentSubmit = async (evt: any) => {
         evt.preventDefault();
@@ -106,7 +110,7 @@ export default function Comments({ params }: { params: { waqfId: string } }) {
     if (!comments.length) {
 
         return (
-            <Container style={{minHeight:"360px",  alignContent:'center'}} sx={{ mt: 8 }} component={"main"} maxWidth="md">
+            <Container style={{ minHeight: "360px", alignContent: 'center' }} sx={{ mt: 8 }} component={"main"} maxWidth="md">
                 <Box textAlign={'center'}>No comments found</Box>
                 {/* comment box start */}
                 {user.userId && renderCommentBox()}

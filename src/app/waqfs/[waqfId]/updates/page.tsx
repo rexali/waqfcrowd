@@ -15,6 +15,7 @@ import DonateModal from '@/components/common/donate-modal';
 import DonateForm from '../../components/donate-form';
 import { useAuth } from '@/hooks/use-auth';
 import { useGetWaqf } from '../../hooks/use-get-waqf';
+import { getMockWaqfById, getUpdatesByWaqfId } from '@/mocks';
 
 export default function Updates({ params }: { params: { waqfId: string } }) {
 
@@ -22,11 +23,13 @@ export default function Updates({ params }: { params: { waqfId: string } }) {
 
     const [error, setError] = React.useState('');
 
-    const {user} = useAuth();
+    const { user } = useAuth();
 
-    const updates = useUpdate(params.waqfId);
+    const updatex = useUpdate(params.waqfId);
+    const updates= updatex.length?updatex:getUpdatesByWaqfId(params.waqfId);
 
-    const waqf = useGetWaqf(params.waqfId);
+    const waqfx = useGetWaqf(params.waqfId);
+    const waqf = waqfx.length ? waqfx : getMockWaqfById(params.waqfId);
 
     const [open, setOpen] = React.useState(false);
 
@@ -89,7 +92,7 @@ export default function Updates({ params }: { params: { waqfId: string } }) {
     if (!updates.length) {
 
         return (
-            <Container style={{minHeight:"360px",  alignContent:'center'}} sx={{ mt: 8 }} component={"main"} maxWidth="md">
+            <Container style={{ minHeight: "360px", alignContent: 'center' }} sx={{ mt: 8 }} component={"main"} maxWidth="md">
                 <Box textAlign={'center'}>No updates found</Box>
                 {/* update box start */}
                 {user?.userId === parseInt(waqf.userId as string) && renderUpdateBox()}
@@ -104,7 +107,7 @@ export default function Updates({ params }: { params: { waqfId: string } }) {
                 waqf={waqf}
                 openCallback={openCallback}
             />
-            <Box sx={{mt:4 }}>Update(s)</Box>
+            <Box sx={{ mt: 4 }}>Update(s)</Box>
             <Grid container columnSpacing={1}>
                 {<UpdateList updates={updates} />}
             </Grid>

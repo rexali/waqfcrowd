@@ -14,16 +14,19 @@ import { useCommentReply } from './hooks/use-comment-reply';
 import { useAuth } from '@/hooks/use-auth';
 import { useGetWaqf } from '@/app/waqfs/hooks/use-get-waqf';
 import { savePathLink } from '@/utils/savePathLink';
+import { getMockWaqfById, getRepliesForComment } from '@/mocks';
 
 
 export default function Replies({ params }: { params: { commentId: string, waqfId: string } }) {
     const { user } = useAuth();
-    
-    const waqf = useGetWaqf(params.waqfId);
+
+    const waqfx = useGetWaqf(params.waqfId);
+    const waqf = Object.keys(waqfx).length ? waqfx : getMockWaqfById(params.waqfId)
 
     const [reply, setReply] = React.useState(' ');
 
-    const replies = useCommentReply(params.commentId, reply);
+    const repliex = useCommentReply(params.commentId, reply);
+    const replies = repliex.length ? repliex : getRepliesForComment(params.commentId,)
 
     const addReply = (evt: any) => {
         setReply(evt.target.value);
