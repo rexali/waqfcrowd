@@ -20,7 +20,7 @@ export default function WaqfPage() {
     const waqfmocks = mockWaqfs; // render list
     const [activePage, setActivePage] = React.useState(1);
     const waqfx = useWaqf(activePage);
-    const waqfs = waqfx.length ? waqfx: waqfmocks;
+    const waqfs = waqfx.length ? waqfx : waqfmocks;
     const [waqfId, setWaqfId] = React.useState();
     const [category, setCategory] = React.useState("all");
     const [open, setOpen] = React.useState(false);
@@ -36,8 +36,8 @@ export default function WaqfPage() {
 
     const isMobile = useMediaQuery({ maxDeviceWidth: 1023 });
 
-    const waqfPurposes = Array.from(new Set(waqfs.map((waqf: any, _: any) => waqf?.purpose)))??[];
-    const categoryWaqfs = Array.from(new Set(waqfs.filter((waqf: any, _: any) => waqf?.purpose?.toLowerCase() === category?.toLowerCase())))??[];
+    const waqfPurposes = Array.from(new Set(waqfs.map((waqf: any, _: any) => waqf?.purpose))) ?? [];
+    const categoryWaqfs = Array.from(new Set(waqfs.filter((waqf: any, _: any) => waqf?.purpose?.toLowerCase() === category?.toLowerCase()))) ?? [];
 
     const getCategoryCallback = (cat: string) => {
         setCategory(cat);
@@ -47,7 +47,7 @@ export default function WaqfPage() {
     if (!waqfs?.length) {
         return (
             <Container sx={{ mt: 8 }} component={"main"} maxWidth="md">
-                <Box style={{minHeight:"360px",  alignContent:'center', textAlign:'center'}}>No waqf found</Box>
+                <Box style={{ minHeight: "360px", alignContent: 'center', textAlign: 'center' }}>No waqf found</Box>
                 <Box marginTop={4} display={"flex"} justifyContent={'center'}>
                     <ReactPagination
                         activePage={activePage}
@@ -61,25 +61,30 @@ export default function WaqfPage() {
     }
 
     return (
-        <Container component={"main"}   style={{minHeight:650}} maxWidth={'md'}>
-            <Box sx={isMobile ? {display:'block', marginLeft:'auto',marginRight:'auto'} : { display: "flex", flexDirection: "row", justifyContent: "space-between" }}>
-                <Box sx={isMobile ? { display: "none" } : { flex: 1, m: 4 }}>
+        <Container component={"main"} style={{ minHeight: 650 }}>
+            <Box sx={isMobile ? { display: 'block', marginLeft: 'auto', marginRight: 'auto' } : { display: "flex", flexDirection: "row", justifyContent: "space-between" }}>
+                <Box sx={isMobile ? { display: "none" } : { flex: 1, m: 2 }}>
                     <Paper>
                         <Typography component={"h1"} variant="h6" sx={{ m: 1, fontSize: 11 }}>CATEGORY</Typography>
                         <WaqfCategory purposes={waqfPurposes} getCategoryCallback={getCategoryCallback} />
                     </Paper>
                 </Box>
-                <Box sx={isMobile ? { marginTop: 8 } : { flex: 3, m: 2 }}>
-                    <Typography marginTop={2} fontSize={11} marginBottom={1}>CATEGORY</Typography>
+                <Box sx={isMobile ? { marginTop: 8, flex: 1 } : { flex: 6, m: 2 }}>
                     {isMobile &&
-                        <div className={styles.scrollmenu} style={{ borderRadius: 5}} >
-                            {["All", ...waqfPurposes].map((purpose: any, i: any) => <a href="#" style={{fontSize:14}}  key={i} onClick={() => getCategoryCallback(purpose.toLowerCase())} >{purpose}</a>)}
-                        </div>
+                        <Box>
+                            <Typography marginTop={2} fontSize={11} marginBottom={1}>CATEGORY</Typography>
+                            <div className={styles.scrollmenu} style={{ borderRadius: 5 }} >
+                                {["All", ...waqfPurposes].map((purpose: any, i: any) => <a href="#" style={{ fontSize: 14 }} key={i} onClick={() => getCategoryCallback(purpose.toLowerCase())} >{purpose}</a>)}
+                            </div>
+                        </Box>
                     }
+
                     <Typography marginTop={1} fontSize={11}>SUPPORT AWQAF</Typography>
-                    <Grid container spacing={2} columnSpacing={1} sx={{display:'block', marginLeft:'auto', marginRight:'auto'}}>
-                        <WaqfList waqfs={category === "all" ? waqfs : categoryWaqfs} openCallback={openCallback} />
-                    </Grid>
+                    <Box marginTop={2} sx={{ display: 'block', marginLeft: 'auto', marginRight: 'auto' }} >
+                        <Grid container spacing={1} columnSpacing={1}>
+                            <WaqfList waqfs={category === "all" ? waqfs : categoryWaqfs} openCallback={openCallback} />
+                        </Grid>
+                    </Box>
                     {open && <DonateModal openCallback={openCallback}><DonateForm waqfId={waqfId} /></DonateModal>}
                 </Box>
             </Box>
