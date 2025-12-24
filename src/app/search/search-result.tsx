@@ -23,7 +23,7 @@ export default function SearchResult({ waqfs }: { waqfs: any }) {
 
         return (
             <Container sx={{ mt: 8 }} component={"main"} maxWidth="md">
-                <Box textAlign={'center'}>No waqf found</Box>
+                <Box style={{minHeight:"360px",  alignContent:'center', textAlign:'center'}}>No waqf found</Box>
             </Container>
         )
     }

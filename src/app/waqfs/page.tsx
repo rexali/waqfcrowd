@@ -47,7 +47,7 @@ export default function WaqfPage() {
     if (!waqfs?.length) {
         return (
             <Container sx={{ mt: 8 }} component={"main"} maxWidth="md">
-                <Box textAlign={'center'}>No waqf found</Box>
+                <Box style={{minHeight:"360px",  alignContent:'center', textAlign:'center'}}>No waqf found</Box>
                 <Box marginTop={4} display={"flex"} justifyContent={'center'}>
                     <ReactPagination
                         activePage={activePage}
@@ -61,7 +61,7 @@ export default function WaqfPage() {
     }
 
     return (
-        <Container component={"main"}   style={{minHeight:650}}>
+        <Container component={"main"}   style={{minHeight:650}} maxWidth={'md'}>
             <Box sx={isMobile ? {display:'block', marginLeft:'auto',marginRight:'auto'} : { display: "flex", flexDirection: "row", justifyContent: "space-between" }}>
                 <Box sx={isMobile ? { display: "none" } : { flex: 1, m: 4 }}>
                     <Paper>
@@ -70,14 +70,14 @@ export default function WaqfPage() {
                     </Paper>
                 </Box>
                 <Box sx={isMobile ? { marginTop: 8 } : { flex: 3, m: 2 }}>
-                    <Typography marginTop={2} fontSize={11}>CATEGORY</Typography><br />
+                    <Typography marginTop={2} fontSize={11} marginBottom={1}>CATEGORY</Typography>
                     {isMobile &&
                         <div className={styles.scrollmenu} style={{ borderRadius: 5}} >
-                            {["All", ...waqfPurposes].map((purpose: any, i: any) => <a href="#" style={{fontSize:11}}  key={i} onClick={() => getCategoryCallback(purpose.toLowerCase())} >{purpose}</a>)}
+                            {["All", ...waqfPurposes].map((purpose: any, i: any) => <a href="#" style={{fontSize:14}}  key={i} onClick={() => getCategoryCallback(purpose.toLowerCase())} >{purpose}</a>)}
                         </div>
                     }
-                    <Typography marginTop={2} fontSize={11}>SUPPORT AWQAF</Typography>
-                    <Grid container spacing={2} columnSpacing={1} sx={{marginLeft:'auto', marginRight:'auto'}}>
+                    <Typography marginTop={1} fontSize={11}>SUPPORT AWQAF</Typography>
+                    <Grid container spacing={2} columnSpacing={1} sx={{display:'block', marginLeft:'auto', marginRight:'auto'}}>
                         <WaqfList waqfs={category === "all" ? waqfs : categoryWaqfs} openCallback={openCallback} />
                     </Grid>
                     {open && <DonateModal openCallback={openCallback}><DonateForm waqfId={waqfId} /></DonateModal>}

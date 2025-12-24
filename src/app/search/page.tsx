@@ -20,11 +20,11 @@ export default function SearchPage() {
         setActivePage(pageNumber)
     }    
 
-    if (data === "undefined") {
+    if (!data) {
 
         return (
             <Container sx={{ mt: 8 }} component={"main"} maxWidth="md">
-                <Box textAlign={'center'}>No waqf found</Box>
+                <Box style={{minHeight:"360px",  alignContent:'center', textAlign:'center'}}>No waqf found</Box>
             </Container>
         )
     }

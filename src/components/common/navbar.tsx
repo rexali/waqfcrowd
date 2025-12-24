@@ -26,7 +26,13 @@ import { Avatar, createTheme, ThemeProvider } from '@mui/material';
 
 const pages = ['About', "Services", 'Contact', 'News', 'Resources', "Zakat", 'Waqfs'];
 
-const menus = ['Users', 'Messages', "Notifications", 'Settings', 'Logout'];
+const menus = [
+  'Users', 
+  'Messages', 
+  "Notifications", 
+  // 'Settings', 
+  'Logout'
+];
 
 
 const lightTheme = createTheme({
@@ -42,6 +48,8 @@ const lightTheme = createTheme({
 });
 
 function NavBar() {
+  
+  const isMobile = useMediaQuery({ maxDeviceWidth: 1023 });
 
   const { user } = useAuth();
 
@@ -75,7 +83,6 @@ function NavBar() {
     setAnchorElCat(null);
   };
 
-  const isMobile = useMediaQuery({ maxDeviceWidth: 1023 });
 
   return (
     <ThemeProvider theme={lightTheme}>
