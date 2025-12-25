@@ -58,14 +58,14 @@ export default function DonateForm({ waqfId }: { waqfId: any }) {
                         </Typography>
 
                         <Typography component="h1" variant="h5" sx={{ fontSize: 16 }} >
-                            Account No.: 0020345409
+                            Account No.: 0693463613
                         </Typography>
 
                         <Typography component="h1" variant="h5" sx={{ fontSize: 16 }} >
                             Account Name:Almubarak Waqf Foundation
                         </Typography><br />
 
-                        <Typography component="h1" variant="h6" textAlign={'center'}>
+                        <Typography component="h1" variant="h6">
                             Or
                         </Typography>
 

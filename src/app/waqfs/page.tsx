@@ -61,17 +61,18 @@ export default function WaqfPage() {
     }
 
     return (
-        <Container component={"main"} style={{ minHeight: 650 }}>
-            <Box sx={isMobile ? {display: 'block', marginLeft: 'auto', marginRight: 'auto'} : { display: "flex", flexDirection: "row", justifyContent: "space-between" }}>
-                
-                <Box sx={isMobile ? { display: "none" } : { flex: 1, m: 2 }}>
+        <Container component="main" maxWidth="lg" style={{ minHeight: 650 }}>
+        {/* <Box style={{ display: 'block', marginLeft: 'auto', marginRight: 'auto' }}> */}
+            <Box sx={isMobile ? { display: 'block', marginLeft: 'auto', marginRight: 'auto' } : { display: "flex", flexDirection: "row", justifyContent: "space-between" }}>
+
+                <Box sx={isMobile ? { display: "none" } : { flex: 1, m: 1 }}>
                     <Paper>
                         <Typography component={"h1"} variant="h6" sx={{ m: 1, fontSize: 11 }}>CATEGORY</Typography>
                         <WaqfCategory purposes={waqfPurposes} getCategoryCallback={getCategoryCallback} />
                     </Paper>
                 </Box>
 
-                <Box sx={isMobile ? { marginTop: 8, flex: 1 } : { flex: 6, m: 2 }}>
+                <Box sx={isMobile ? { marginTop: 8} : { flex: 4, m: 1 }}>
                     {isMobile &&
                         <Box>
                             <Typography marginTop={2} fontSize={11} marginBottom={1}>CATEGORY</Typography>
@@ -84,7 +85,7 @@ export default function WaqfPage() {
                     <Typography marginTop={1} fontSize={11}>SUPPORT AWQAF</Typography>
 
                     <Box marginTop={2} >
-                        <Grid container spacing={1} columnSpacing={1} style={{ display: 'block', marginLeft: 'auto', marginRight: 'auto' }}>
+                        <Grid container spacing={1} columnSpacing={1}>
                             <WaqfList waqfs={category === "all" ? waqfs : categoryWaqfs} openCallback={openCallback} />
                         </Grid>
                     </Box>
@@ -99,6 +100,7 @@ export default function WaqfPage() {
                     pageRangeDisplayed={4}
                     onchangeCallback={handlePageChange} />
             </Box>
+        {/* </Box> */}
         </Container>
     );
 }

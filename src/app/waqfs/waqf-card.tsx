@@ -48,7 +48,7 @@ function WaqfCard({
   const userLike = waqf?.userIds?.includes(user.userId);
 
   return (
-    <Card sx={{ maxWidth: 320, marginTop: 2 }}>
+    <Card sx={{ marginTop: 2 }}>
       <CardActions sx={{ flexDirection: 'row', justifyContent: 'space-between' }} >
         <SharePopover waqfId={waqf.waqfId} />
         <Button
@@ -92,8 +92,9 @@ function WaqfCard({
         <Typography gutterBottom variant="h6" fontSize={14} component="div" color="text.primary">
           {waqf.name}
         </Typography>
-        <Typography variant="body2" color="text.secondary" noWrap={false} width={310}>
-          {waqf.description ? waqf.description.slice(0, 100) + "..." : ""}
+        <Typography variant="body2" color="text.secondary" noWrap={true}>
+          {waqf.description ? waqf.description : ''}
+          {/* {waqf.description ? waqf.description.slice(0, 120) + "..." : ""} */}
         </Typography>
         <Typography variant="body2" color="text.primary">
           {/* ...................................................................... */}
