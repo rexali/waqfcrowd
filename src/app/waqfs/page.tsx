@@ -62,13 +62,15 @@ export default function WaqfPage() {
 
     return (
         <Container component={"main"} style={{ minHeight: 650 }}>
-            <Box sx={isMobile ? { display: 'block', marginLeft: 'auto', marginRight: 'auto' } : { display: "flex", flexDirection: "row", justifyContent: "space-between" }}>
+            <Box sx={isMobile ? {display: 'block', marginLeft: 'auto', marginRight: 'auto'} : { display: "flex", flexDirection: "row", justifyContent: "space-between" }}>
+                
                 <Box sx={isMobile ? { display: "none" } : { flex: 1, m: 2 }}>
                     <Paper>
                         <Typography component={"h1"} variant="h6" sx={{ m: 1, fontSize: 11 }}>CATEGORY</Typography>
                         <WaqfCategory purposes={waqfPurposes} getCategoryCallback={getCategoryCallback} />
                     </Paper>
                 </Box>
+
                 <Box sx={isMobile ? { marginTop: 8, flex: 1 } : { flex: 6, m: 2 }}>
                     {isMobile &&
                         <Box>
@@ -80,13 +82,14 @@ export default function WaqfPage() {
                     }
 
                     <Typography marginTop={1} fontSize={11}>SUPPORT AWQAF</Typography>
-                    <Box marginTop={2} sx={{ display: 'block', marginLeft: 'auto', marginRight: 'auto' }} >
-                        <Grid container spacing={1} columnSpacing={1}>
+
+                    <Box marginTop={2} >
+                        <Grid container spacing={1} columnSpacing={1} style={{ display: 'block', marginLeft: 'auto', marginRight: 'auto' }}>
                             <WaqfList waqfs={category === "all" ? waqfs : categoryWaqfs} openCallback={openCallback} />
                         </Grid>
                     </Box>
-                    {open && <DonateModal openCallback={openCallback}><DonateForm waqfId={waqfId} /></DonateModal>}
                 </Box>
+                {open && <DonateModal openCallback={openCallback}><DonateForm waqfId={waqfId} /></DonateModal>}
             </Box>
             <Box marginTop={4} display={"flex"} justifyContent={'center'}>
                 <ReactPagination

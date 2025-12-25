@@ -152,7 +152,7 @@ function NavBar() {
                 key={index + "p"}
                 onClick={() => { handleCloseNavMenu }}
                 href={`/${page === "Waqf" ? "waqfs" : page.toLowerCase()}`}
-                style={{ margin: 4, color: 'white', display: 'block', textDecoration: "none", fontSize: 14 }}
+                style={{ marginRight: 10, color: 'white', display: 'block', textDecoration: "none", fontSize: 14 }}
               >
                 {page}
               </Link>

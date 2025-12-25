@@ -18,7 +18,7 @@ import { useWaqf } from '@/hooks/use-waqf';
 import { getToken } from '@/utils/getToken';
 
 export default function HomePage() {
-
+    
   const isMobile = useMediaQuery({ maxDeviceWidth: 1023 });
 
   const jwt = getToken("jwtoken");
