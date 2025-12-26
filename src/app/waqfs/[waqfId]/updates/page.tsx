@@ -16,8 +16,11 @@ import DonateForm from '../../components/donate-form';
 import { useAuth } from '@/hooks/use-auth';
 import { useGetWaqf } from '../../hooks/use-get-waqf';
 import { getMockWaqfById, getUpdatesByWaqfId } from '@/mocks';
+import { useMediaQuery } from 'react-responsive';
+import WaqfDetailsCard from '../../waqf-details-card';
 
 export default function Updates({ params }: { params: { waqfId: string } }) {
+    const isMobile = useMediaQuery({ maxDeviceWidth: 1024 });
 
     const [success, setSuccess] = React.useState('');
 
@@ -107,6 +110,8 @@ export default function Updates({ params }: { params: { waqfId: string } }) {
                 waqf={waqf}
                 openCallback={openCallback}
             />
+            {isMobile && <WaqfCard waqf={waqf} openCallback={openCallback} />}
+            {!isMobile && <WaqfDetailsCard waqf={waqf} openCallback={openCallback} />}
             <Box sx={{ mt: 4 }}>Update(s)</Box>
             <Grid container columnSpacing={1}>
                 {<UpdateList updates={updates} />}

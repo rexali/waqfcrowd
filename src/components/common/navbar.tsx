@@ -27,9 +27,9 @@ import { Avatar, createTheme, ThemeProvider } from '@mui/material';
 const pages = ['About', "Services", 'Contact', 'News', 'Resources', "Zakat", 'Waqfs'];
 
 const menus = [
-  'Users', 
-  'Messages', 
-  "Notifications", 
+  'Users',
+  'Messages',
+  "Notifications",
   // 'Settings', 
   'Logout'
 ];
@@ -48,7 +48,7 @@ const lightTheme = createTheme({
 });
 
 function NavBar() {
-  
+
   const isMobile = useMediaQuery({ maxDeviceWidth: 1023 });
 
   const { user } = useAuth();
@@ -90,9 +90,21 @@ function NavBar() {
         <Container maxWidth={"xl"}>
           <Toolbar disableGutters>
             {!isMobile && <AWFLogo />}
-            <Link prefetch href={'/'} style={{ display: isMobile ? "none" : '', fontSize: 14, textDecoration: 'none', color: 'white', marginRight: 5, letterSpacing: '.4rem', fontWeight: 400, }} >
+            <Link
+              prefetch href={'/'}
+              style={{
+                display: isMobile ? "none" : '',
+                fontSize: 14,
+                textDecoration: 'none',
+                color: 'white',
+                marginRight: 5,
+                letterSpacing: '.4rem',
+                fontWeight: 400,
+              }}
+            >
               Cwaqf
             </Link>
+            
             <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
               <IconButton
                 size="large"

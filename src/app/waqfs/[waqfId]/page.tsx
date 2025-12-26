@@ -13,7 +13,6 @@ import FavouriteIcon from '@mui/icons-material/Favorite';
 import Grid from '@mui/material/Grid';
 import styles from "../styles/waqf-card.module.css";
 import Image from 'next/image';
-import Copyright from '@/components/common/copyright';
 import { useMediaQuery } from 'react-responsive';
 import { Container } from '@mui/material';
 import DonateModal from '@/components/common/donate-modal';
@@ -44,75 +43,70 @@ export default function ViewWaqf({ params }: { params: { waqfId: string } }) {
         openCallback(value);
     }
 
-    return (
-        <Container style={{ minHeight: "365px" }} >
-            <WaqfDetailsCard waqf={data} openCallback={openCallback} />
-            {open && <DonateModal openCallback={openCallback}><DonateForm waqfId={params.waqfId} /></DonateModal>}
-        </Container>
+    return (<Container style={{ minHeight: "365px" }}>
+        {!isMobile && <WaqfDetailsCard waqf={data} openCallback={openCallback} />}
+        {isMobile && (<Card style={{ marginTop: isMobile ? 80 : 10 }}>
+            <CardContent sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+                <Grid container columnSpacing={1}>
 
-        // <Container style={{minHeight:"365px"}} >
-        //     <Card style={{ marginTop: isMobile ? 80 : 10 }}>
-        //         <CardContent sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
-        //             <Grid container columnSpacing={1}>
+                    <Grid item xs={12} md={4} textAlign={'center'}>
+                        <Image
+                            style={{
+                                height: 150,
+                                width: 200,
+                                borderRadius: 10,
+                            }}
+                            src={require("../../../assets/images/awf-logo.png")}
+                            alt={"picture"} />
+                    </Grid>
 
-        //                 <Grid item xs={12} md={4} textAlign={'center'}>
-        //                     <Image
-        //                         style={{
-        //                             height: 150,
-        //                             width: 200,
-        //                             borderRadius: 10,
-        //                         }}
-        //                         src={require("../../../assets/images/awf-logo.png")}
-        //                         alt={"picture"}
-        //                     />
-        //                 </Grid>
+                    <Grid item xs={12} md={8}>
+                        {/* <Box> */}
+                        <Typography gutterBottom variant="h5" component="div">
+                            {data?.name ? data.name : ""}
+                        </Typography>
 
-        //                 <Grid item xs={12} md={8}>
-        //                     {/* <Box> */}
-        //                     <Typography gutterBottom variant="h5" component="div">
-        //                         {data?.name ? data.name : ""}
-        //                     </Typography>
+                        <CardActions>
+                            {/* <Button size="small" onClick={() => shareLink(params.waqfId)} startIcon={<ShareIcon />}>Share</Button> */}
+                            <SharePopover waqfId={params.waqfId} />
+                            <Button
+                                size="small"
+                                style={{ fontSize: 8 }}
+                                onClick={() => saveFavouriteWaqf({
+                                    userId: user.userId,
+                                    waqfId: params.waqfId,
+                                    category: "waqf"
+                                })}
+                                startIcon={<FavouriteIcon />}
+                            >Save</Button>
+                        </CardActions>
 
-        //                     <CardActions  >
-        //                         {/* <Button size="small" onClick={() => shareLink(params.waqfId)} startIcon={<ShareIcon />}>Share</Button> */}
-        //                         <SharePopover waqfId={params.waqfId} />
-        //                         <Button
-        //                             size="small"
-        //                             style={{fontSize:8 }}
-        //                             onClick={() => saveFavouriteWaqf({
-        //                                 userId: user.userId,
-        //                                 waqfId: params.waqfId,
-        //                                 category: "waqf"
-        //                             })}
-        //                             startIcon={<FavouriteIcon />}
-        //                         >Save</Button>
-        //                     </CardActions>
+                        <Typography variant="body1" color="text.secondary">
+                            {data?.description ? data.description : ""}
+                        </Typography>
 
-        //                     <Typography variant="body1" color="text.secondary"  >
-        //                         {data?.description ? data.description : ""}
-        //                     </Typography>
-
-        //                     <CardActions>
-        //                         <Button href='' size="small" style={{fontSize:8 }} className={styles.cardbutton} onClick={() => supportWaqf(true)} startIcon={<MoneyIcon />}>Support</Button>
-        //                         <Button href='' size="small" className={styles.cardbutton} startIcon={<UpdateIcon />}>
-        //                             <Link href={{
-        //                                 pathname: `/waqfs/${params.waqfId}/updates`,
-        //                             }}
-        //                                 style={{ textDecoration: "none", fontSize:8 }}
-        //                             >Update(s)</Link>
-        //                         </Button>
-        //                         <Button size="small" className={styles.cardbutton} startIcon={<CommentIcon />}>
-        //                             <Link href={{
-        //                                 pathname: `/waqfs/${params.waqfId}/comments`,
-        //                             }} style={{ textDecoration: "none", fontSize:8 }}>Comments</Link>
-        //                         </Button>
-        //                     </CardActions>
-        //                     {/* </Box> */}
-        //                 </Grid>
-        //             </Grid>
-        //             {open && <DonateModal openCallback={openCallback}><DonateForm waqfId={params.waqfId} /></DonateModal>}
-        //         </CardContent>
-        //     </Card>
-        // </Container>
+                        <CardActions>
+                            <Button href='' size="small" style={{ fontSize: 8 }} className={styles.cardbutton} onClick={() => supportWaqf(true)} startIcon={<MoneyIcon />}>Support</Button>
+                            <Button href='' size="small" className={styles.cardbutton} startIcon={<UpdateIcon />}>
+                                <Link href={{
+                                    pathname: `/waqfs/${params.waqfId}/updates`,
+                                }}
+                                    style={{ textDecoration: "none", fontSize: 8 }}
+                                >Update(s)</Link>
+                            </Button>
+                            <Button size="small" className={styles.cardbutton} startIcon={<CommentIcon />}>
+                                <Link href={{
+                                    pathname: `/waqfs/${params.waqfId}/comments`,
+                                }} style={{ textDecoration: "none", fontSize: 8 }}>Comments</Link>
+                            </Button>
+                        </CardActions>
+                        {/* </Box> */}
+                    </Grid>
+                </Grid>
+            </CardContent>
+        </Card>)
+        }
+        {open && <DonateModal openCallback={openCallback}><DonateForm waqfId={params.waqfId} /></DonateModal>}
+    </Container>
     );
 }
