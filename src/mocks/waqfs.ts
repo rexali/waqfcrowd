@@ -85,7 +85,7 @@ export const mockWaqfs: Waqf[] = [
 
 // Helper: find waqf by id
 export function getMockWaqfById(id: string): Waqf | undefined {
-    return mockWaqfs.find((w) => w.waqfId === id);
+    return mockWaqfs.find((w) => w.waqfId === String(id));
 }
 
 // Example usage:

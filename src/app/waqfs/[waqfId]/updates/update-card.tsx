@@ -10,7 +10,8 @@ export default function UpdateCard({
     body = "Waqf is an Islamic endowment",
 }: { title: any, body: any}) {
     return (
-        <Card sx={{ maxWidth: 345, marginTop: 2 }}>
+        //  maxWidth: 345,
+        <Card sx={{ marginTop: 2 }}>
             <CardContent>
                 <Typography gutterBottom variant="h5" component="div">
                     {title}

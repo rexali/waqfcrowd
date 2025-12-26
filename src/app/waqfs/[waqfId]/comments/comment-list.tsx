@@ -5,7 +5,7 @@ import Grid from "@mui/material/Grid";
 export default function CommentList({ comments}: { comments: any }) {
 
     return comments?.map((comment: any, index: any) =>
-    (<Grid item xs={12} md={6} key={comment.commentId + index}>
+    (<Grid item xs={12} sm={6} md={4} key={comment.commentId + index}>
         <CommentCard
             comment={comment} />
     </Grid>)

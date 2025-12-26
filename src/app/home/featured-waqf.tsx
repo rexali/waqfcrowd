@@ -45,7 +45,7 @@ export default function FeaturedWaqfs() {
             <h2>Featured</h2>
             <Box m={5} >
                 <Grid container spacing={2} columnSpacing={1}>
-                    <WaqfList waqfs={data.slice(0, 2)} openCallback={openCallback} />
+                    <WaqfList waqfs={data.slice(0, 3)} openCallback={openCallback} />
                 </Grid>
             </Box>
             {open && <DonateModal openCallback={openCallback}><DonateForm waqfId={waqfId} /></DonateModal>}

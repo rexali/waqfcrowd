@@ -62,7 +62,6 @@ export default function WaqfPage() {
 
     return (
         <Container component="main" maxWidth="lg" style={{ minHeight: 650 }}>
-        {/* <Box style={{ display: 'block', marginLeft: 'auto', marginRight: 'auto' }}> */}
             <Box sx={isMobile ? { display: 'block', marginLeft: 'auto', marginRight: 'auto' } : { display: "flex", flexDirection: "row", justifyContent: "space-between" }}>
 
                 <Box sx={isMobile ? { display: "none" } : { flex: 1, m: 1 }}>

@@ -12,7 +12,8 @@ export default function ReplyCard({
 }: { reply: any, }) {
 
     return (
-        <Card sx={{ maxWidth: 345, marginTop: 2 }}>
+        //  maxWidth: 345,
+        <Card sx={{ marginTop: 2 }}>
             <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', m: 0 }}>
                 <Image
                     style={{

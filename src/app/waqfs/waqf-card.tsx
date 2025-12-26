@@ -19,7 +19,7 @@ import { saveFavouriteWaqf } from './api/saveFavouriteWaqf';
 import { useAuth } from '@/hooks/use-auth';
 import styles from "./styles/waqf-card.module.css";
 import SharePopover from './components/share-popover';
-import { getCommentsByWaqfId } from '@/mocks';
+import { useMediaQuery } from 'react-responsive';
 
 function WaqfCard({
   waqf,
@@ -28,6 +28,8 @@ function WaqfCard({
   waqf: any,
   openCallback: any,
 }) {
+
+  const isMobile = useMediaQuery({ maxDeviceWidth: 1024 })
 
   const { user } = useAuth();
 
@@ -49,7 +51,7 @@ function WaqfCard({
 
   return (
     <Card sx={{ marginTop: 2 }}>
-      <CardActions sx={{ flexDirection: 'row', justifyContent: 'space-between' }} >
+      <CardActions sx={{ flexDirection: 'row', justifyContent: 'space-between' }}>
         <SharePopover waqfId={waqf.waqfId} />
         <Button
           sx={{ fontSize: 8 }}
@@ -66,8 +68,7 @@ function WaqfCard({
             <Link href={{
               pathname: `/waqfs/${waqf.waqfId}/delete`,
             }} style={{ textDecoration: "none" }} prefetch>Delete</Link>
-          </Button>)
-        }
+          </Button>)}
       </CardActions>
       <Box
         component={"div"}
@@ -75,7 +76,7 @@ function WaqfCard({
       >
         <Link href={{
           pathname: `/waqfs/${waqf.waqfId}`,
-        }} >
+        }}>
           <Image
             style={{
               height: 150,
@@ -83,13 +84,10 @@ function WaqfCard({
               borderRadius: 10,
             }}
             src={require("../../assets/images/awf-logo.png")}
-            alt={"picture"}
-          />
+            alt={"picture"} />
         </Link>
-      </Box>
-
-      <CardContent>
-        <Typography gutterBottom variant="h6" fontSize={14} component="div" color="text.primary">
+      </Box><CardContent>
+        <Typography gutterBottom variant="h6" noWrap={true} fontSize={14} component="div" color="text.primary">
           {waqf.name}
         </Typography>
         <Typography variant="body2" color="text.secondary" noWrap={true}>
@@ -100,8 +98,7 @@ function WaqfCard({
           {/* ...................................................................... */}
         </Typography><br />
         <Typography fontSize={10}>Donation: N{waqf.totalDonation ? waqf.totalDonation : 6} of {waqf.expectedAmount ? waqf.expectedAmount : 23} </Typography>
-      </CardContent>
-      <CardActions sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-around' }}>
+      </CardContent><CardActions sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-around' }}>
         <Button href='' size="small" className={styles.cardbutton} onClick={() => supportWaqf(true, waqf.waqfId)} startIcon={<MoneyIcon />}>
           <span style={{ fontSize: 8, textDecoration: "none", display: 'flex', flexDirection: 'column' }}>Support<span>{waqf.updatesNo}</span></span>
         </Button>
@@ -122,11 +119,9 @@ function WaqfCard({
             <Link href={{
               pathname: `/waqfs/${waqf.waqfId}/edit`,
             }} style={{ fontSize: 8, textDecoration: "none" }} prefetch>Edit</Link>
-          </Button>)
-        }
+          </Button>)}
       </CardActions>
-    </Card>
-  );
+    </Card>);
 }
 
 export default WaqfCard;

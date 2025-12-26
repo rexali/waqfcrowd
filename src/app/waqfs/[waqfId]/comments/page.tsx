@@ -18,6 +18,7 @@ import { useWaqfComment } from './hooks/use-waqf-comment';
 import { useGetWaqf } from '../../hooks/use-get-waqf';
 import { savePathLink } from '@/utils/savePathLink';
 import { getCommentsByWaqfId, getMockWaqfById } from '@/mocks';
+import WaqfDetailsCard from '../../waqf-details-card';
 
 export default function Comments({ params }: { params: { waqfId: string } }) {
 
@@ -121,10 +122,11 @@ export default function Comments({ params }: { params: { waqfId: string } }) {
     return (
         <Container sx={{ mt: 8 }} component="main" maxWidth="md" >
             <Box sx={{ mb: 4 }}>Waqf</Box>
-            <WaqfCard
+            {/* <WaqfCard
                 waqf={waqf}
                 openCallback={openCallback}
-            />
+            /> */}
+            <WaqfDetailsCard waqf={waqf} openCallback={openCallback} />
             {/* donate form */}
             {open && <DonateModal openCallback={openCallback}><DonateForm waqfId={params.waqfId} /></DonateModal>}
             {/* comment list start here */}

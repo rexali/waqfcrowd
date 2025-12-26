@@ -21,16 +21,17 @@ export default function Replies({ params }: { params: { commentId: string, waqfI
     const { user } = useAuth();
 
     const waqfx = useGetWaqf(params.waqfId);
-    const waqf = Object.keys(waqfx).length ? waqfx : getMockWaqfById(params.waqfId)
+    const waqf = Object.keys(waqfx || {}).length ? waqfx : getMockWaqfById(params.waqfId)
 
     const [reply, setReply] = React.useState(' ');
 
     const repliex = useCommentReply(params.commentId, reply);
     const replies = repliex.length ? repliex : getRepliesForComment(params.commentId,)
 
-    const addReply = (evt: any) => {
+    const addReply = (evt: any) => { 
         setReply(evt.target.value);
     }
+    
     const renderReplyBox = () => {
 
         return (
@@ -95,7 +96,7 @@ export default function Replies({ params }: { params: { commentId: string, waqfI
 
     if (!replies.length) {
 
-        return <Container sx={{ mt: 8 }} component={"main"} maxWidth="md">
+        return <Container style={{ minHeight: "360px", alignContent: 'center', marginTop:8}} component={"main"} maxWidth="md">
             <Box textAlign={'center'}>No replie(s) found</Box>
             {/* reply box */}
             {user?.userId === parseInt(waqf.userId as string) && renderReplyBox()}

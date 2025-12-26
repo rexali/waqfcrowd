@@ -10,8 +10,8 @@ import * as React from "react";
 export default function CommentCard({
     comment,
 }: { comment: any, }) {
-
-    return (<Card sx={{ maxWidth: 345, marginTop: 2 }}>
+    // maxWidth: 345,
+    return (<Card sx={{ marginTop: 2 }}>
         <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: "space-between", m: 0 }}>
             <Image
                 style={{
@@ -38,7 +38,7 @@ export default function CommentCard({
             }} style={{ textDecoration: "none", margin:1 }}>{comment.repliesNo} replies</Link>
             <Link href={{
                 pathname: `/waqfs/${comment.waqfId}/comments/${comment.commentId}/replies`,
-            }} style={{ textDecoration: "none", margin:1 }}>reply</Link>
+            }} style={{ textDecoration: "none", margin:1 }}>Reply</Link>
         </Box>
     </Card>)
 }

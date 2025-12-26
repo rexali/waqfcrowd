@@ -4,12 +4,12 @@ import { Comment, mockComments } from './comments';
 export type Reply = Comment;
 
 // Derived replies from `mockComments` (comments that have a parentId)
-const derivedReplies: Reply[] = mockComments.filter((c) => Boolean(c.parentId));
+// const derivedReplies: Reply[] = mockComments.filter((c) => Boolean(c.parentId));
 
 // Extra reply fixtures (additional reply records for testing)
 const extraReplies: Reply[] = [
     {
-        commentId: 'cmt_1004',
+        commentId: 'cmt_1001',
         waqfId: 'wqf_001',
         userId: 'usr_104',
         body: 'Great update — thanks for sharing progress!',
@@ -18,16 +18,16 @@ const extraReplies: Reply[] = [
         parentId: 'cmt_1001',
     },
     {
-        commentId: 'cmt_1005',
+        commentId: 'cmt_1002',
         waqfId: 'wqf_001',
         userId: 'usr_105',
         body: 'Can I contribute materials instead of cash?',
         createdAt: '2025-12-20T09:20:00Z',
-        repliesNo: 1,
+        repliesNo: 0,
         parentId: 'cmt_1002',
     },
     {
-        commentId: 'cmt_2002',
+        commentId: 'cmt_1003',
         waqfId: 'wqf_002',
         userId: 'usr_301',
         body: 'I can help run the digital skills sessions.',
@@ -36,7 +36,7 @@ const extraReplies: Reply[] = [
         parentId: 'cmt_2001',
     },
     {
-        commentId: 'cmt_1006',
+        commentId: 'cmt_1004',
         waqfId: 'wqf_001',
         userId: 'usr_106',
         body: "That's wonderful — keep us posted on completion.",
@@ -47,10 +47,14 @@ const extraReplies: Reply[] = [
 ];
 
 // Final mockReplies array used by helpers/tests
-export const mockReplies: Reply[] = [...derivedReplies, ...extraReplies];
+export const mockReplies: Reply[] = [
+    // ...derivedReplies, 
+    ...extraReplies
+];
 
 export function getRepliesForComment(commentId: string): Reply[] {
-    return mockReplies.filter((r) => r.parentId === commentId);
+    
+    return mockReplies.filter((r) => r.commentId === commentId) as Reply[];
 }
 
 export function getRepliesByWaqfId(waqfId: string): Reply[] {
